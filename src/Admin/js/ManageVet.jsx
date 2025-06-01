@@ -319,6 +319,15 @@ const ManageVet = () => {
               <button
                 onClick={() => setSelectedVet(null)}
                 className="btn close"
+                style={{
+                                                          marginTop: '10px',
+                                                          padding: '8px 16px',
+                                                          backgroundColor: '#007bff',
+                                                          color: '#fff',
+                                                          border: 'none',
+                                                          borderRadius: '4px',
+                                                          cursor: 'pointer',
+                                                        }}
               >
                 Close
               </button>
