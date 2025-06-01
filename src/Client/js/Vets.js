@@ -72,7 +72,7 @@ useEffect(() => {
 
   const handleNavigate = (vet) => {
     // console.log("vet is",vet)
-    navigate('/vprofile', { state: { vet } });
+    navigate('/guestvetprofile', { state: { vet } });
   };
 
   return (
