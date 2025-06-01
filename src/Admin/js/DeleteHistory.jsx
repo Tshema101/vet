@@ -60,19 +60,11 @@ const DeleteHistory = () => {
         <AdminHeader />
         <div className="dashboard-container" style={{ marginTop: "-30px" }}>
           {error && <div className="error-message">{error}</div>}
-
-          <div
-            className="table-container"
-            style={{
-              maxHeight: "400px",
-              overflowY: "auto",
-              overflowX: "auto",
-              border: "1px solid #ddd",
-              marginTop: "20px",
-            }}
-          >
            <h3 style={{ padding: "20px" }}> <a href="/vetManage" style={{textDecoration:"none", color:'black'}}> <FaArrowAltCircleLeft style={{marginBottom:'-3px'}} /> </a> Deleted Vets</h3>
-            {loading ? (
+           <div
+            className="table-container"
+          >  
+          {loading ? (
               <p>Loading...</p>
             ) : vetList.length === 0 ? (
               <p>No vets registered.</p>
