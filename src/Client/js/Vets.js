@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaPaw, FaArrowRight } from 'react-icons/fa';
@@ -45,7 +47,7 @@ useEffect(() => {
 
       for (const vet of approvedVets) {
         try {
-          const response = await axios.get(`https://vetserver.onrender.com/vet/${vet._id}/getreviews`);
+          const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/vet/${vet._id}/getreviews`);
           reviewsData[vet._id] = {
             reviews: response.data.reviews || [],
             averageRating: response.data.averageRating || 0,
@@ -69,6 +71,7 @@ useEffect(() => {
   }, [approvedVets]);
 
   const handleNavigate = (vet) => {
+    // console.log("vet is",vet)
     navigate('/vprofile', { state: { vet } });
   };
 
@@ -101,7 +104,7 @@ useEffect(() => {
                       vet.photo
                         ? vet.photo.startsWith('http')
                           ? vet.photo
-                          : `https://vetserver.onrender.com/${vet.photo.replace(/\\/g, '/').replace(/^\/+/, '')}`
+                          : `http://localhost:8080/${vet.photo.replace(/\\/g, '/').replace(/^\/+/, '')}`
                         : '/defaultvet.jpg'
                     }
                     alt={vet.name}

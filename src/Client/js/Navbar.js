@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronDownIcon, UserIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -37,6 +36,7 @@ const Navbar = () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+  
 
   const toggleAuthModal = () => {
     setShowAuthModal(!showAuthModal);

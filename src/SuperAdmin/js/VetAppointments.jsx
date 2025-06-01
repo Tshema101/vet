@@ -20,7 +20,7 @@ const VetAppointments = () => {
     const fetchAppointments = async () => {
       try {
         const res = await fetch(
-          `https://vetserver.onrender.com/appointments/vet/${vet._id}?month=${selectedMonth}`
+          `${process.env.REACT_APP_BASE_URL}/appointments/vet/${vet._id}?month=${selectedMonth}`
         );
         const result = await res.json();
         if (result.success) {

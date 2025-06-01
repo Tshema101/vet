@@ -38,7 +38,7 @@
   /* background: #f8f9fa; */
 }
 
-.logo {
+.slogo {
  width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -228,7 +228,7 @@
     text-align: center;
   }
 
-  .logo {
+  .slogo {
     width: 250px;
     height: 250px;
   }
@@ -249,7 +249,7 @@
     padding: 20px;
   }
 
-  .logo {
+  .slogo {
     width: 220px;
     height: 220px;
   }
@@ -273,11 +273,11 @@
   .left-side p {
     font-size: 1rem;
   }
-
-  .logo {
+/* 
+  .slogo {
     width: 180px;
     height: 180px;
-  }
+  } */
 
   .rightside {
     padding: 15px;

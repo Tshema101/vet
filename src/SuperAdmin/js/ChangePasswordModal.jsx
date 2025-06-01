@@ -15,7 +15,7 @@ const ChangePasswordModal = ({ onClose }) => {
     setMessage("");
 
     try {
-      const res = await fetch("https://vetserver.onrender.com/change-password", {
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/change-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

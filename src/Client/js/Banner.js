@@ -10,7 +10,7 @@ const Banner = () => {
     useEffect(() => {
         const fetchCloudinaryImages = async () => {
             try {
-                const response = await fetch('https://vetserver.onrender.com/api/images'); // Replace with your actual API
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/images`); // Replace with your actual API
                 if (!response.ok) {
                     throw new Error('Failed to fetch images');
                 }
@@ -89,7 +89,7 @@ const Banner = () => {
                                 // objectFit: 'cover',
                                 // filter: 'brightness(0.75)',
                                 // opacity: '85%',		
-                                // borderRadius: '10px'
+                                borderRadius: '0px',
                                 border:"none"
                             }}
                         />
@@ -106,6 +106,7 @@ const Banner = () => {
                     position: relative;
                     margin-top: 85px;
                     height: 650px;
+                    border:none;
                 }
 
                 .banner-image {
@@ -116,6 +117,14 @@ const Banner = () => {
                     filter: brightness(0.73);
                     opacity: 0.85;
                 }
+                    .carousel .slider-wrapper,
+                    .carousel .slider,
+                    .carousel .slide,
+                    .carousel .slide img {
+                    border: none !important;
+                    border-radius: 0 !important;
+                     background: none !important;
+                    }
 
                 .decorative-overlay {
                     position: absolute;

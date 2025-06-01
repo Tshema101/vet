@@ -160,13 +160,13 @@
     padding: 15px;
     margin-top: 300px;
   }
-    .about {
+    /* .about {
     font-size: 1.8rem !important;
     margin-top: -300px !important;
     margin-right: 110px;
     padding-top: 90px;
     
-  }
+  } */
 
   .about-images {
     grid-template-columns: 1fr;
@@ -187,6 +187,7 @@
   .skills-section h3 {
     font-size: 20px;
   }
+
 }
 
 /* Banner and Header adjustments */
@@ -196,13 +197,13 @@
     padding: 1rem !important;
   }
 
-  .about {
+  /* .about {
     font-size: 2rem !important;
     margin-top: -400px !important;
     margin-right: 110px;
-    /* padding-top: 50px; */
+ 
     
-  }
+  } */
 }
 
 /* Ensure content doesn't overflow on small screens */

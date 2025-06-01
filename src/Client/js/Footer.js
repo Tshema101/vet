@@ -96,7 +96,7 @@ const Footer = () => {
             alignItems: 'center', 
             marginTop: '20px' 
           }}>
-            <FaMapMarkerAlt style={{ marginRight: '8px' }} className='location' />
+            <FaMapMarkerAlt style={{ marginRight: '8px', color:'white', marginTop:'9px' }} className='location' />
             Thimphu, Bhutan
           </p>
         </div>

@@ -148,7 +148,7 @@
 }
 
 /* Mobile Devices (≤ 600px) */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .slider-container {
     flex-direction: column;
   }
@@ -165,7 +165,6 @@
     padding: 1rem;
     align-items: center;
     text-align: left;
-    /* margin-right: 50px; */
   }
 
   .vet-card img {
@@ -179,7 +178,6 @@
 
   .arrow {
     font-size: 18px;
-    /* margin: 2px 0; */
     margin-right: -40px;
     margin-left: -40px;
     position: static;
@@ -194,4 +192,4 @@
   .arrow:hover {
     color: #7193ac;
   }
-}
+} */

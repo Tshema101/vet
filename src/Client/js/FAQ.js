@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "../css/FAQ.css";
@@ -13,7 +15,7 @@ const [contentData, setContentData] = useState([]);
     useEffect(() => {
       const fetchContent = async () => {
         try {
-          const response = await fetch("https://vetserver.onrender.com/content");
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
           const data = await response.json();
           setContentData(data);
         } catch (error) {

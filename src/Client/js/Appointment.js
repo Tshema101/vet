@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -42,12 +44,12 @@ console.log(chargePerHour)
   useEffect(() => {
     const fetchPetsAndVetDetails = async () => {
       try {
-        const petRes = await axios.get("https://vetserver.onrender.com/my-pets", {
+        const petRes = await axios.get(`${process.env.REACT_APP_BASE_URL}/my-pets`, {
           headers: { Authorization: `Bearer ${token} `},
         });
         setPets(petRes.data.data);
 
-        const vetRes = await axios.get(`https://vetserver.onrender.com/vets/${vetId}`, {
+        const vetRes = await axios.get(`${process.env.REACT_APP_BASE_URL}/vets/${vetId}`, {
           headers: { Authorization: `Bearer ${token}`},
         });
         console.log(vetRes.data)
@@ -248,8 +250,7 @@ console.log(chargePerHour)
 
           {/* PayPal Buttons */}
           <PayPalScriptProvider options={{
-            // "client-id": "AWxpy-17ZTNr6V0AJ6ibMW6N_WTOdTTUpazvJ2ITU2nZpfnYhUeWL1YQjo_TWYx8-Sw6mIs3egK7VVxc",
-          "client-id": "AZUeti2dC1HZ-25WafD2lX5nyC8VMZ8woA5pM8u78c3LUhEsz86PdPlrp_iLZwK2-xqu5CGYwivz-qKG",
+                   "client-id": "AZUeti2dC1HZ-25WafD2lX5nyC8VMZ8woA5pM8u78c3LUhEsz86PdPlrp_iLZwK2-xqu5CGYwivz-qKG",
             currency: "SGD"
           }}>
             <PayPalButtons
@@ -265,7 +266,7 @@ console.log(chargePerHour)
                 const order = await actions.order.capture();
                 console.log("Payment successful!", order);
 
-                await axios.post(`https://vetserver.onrender.com/book-paypal/${vetId}`, {
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/book-paypal/${vetId}`, {
                   orderID: order.id,
                   clientId,
                   vetId,

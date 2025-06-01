@@ -28,6 +28,8 @@ const [petIdToDelete, setPetIdToDelete] = useState(null);
 
 const [editingPet, setEditingPet] = useState(null);
 const [editForm, setEditForm] = useState({ name: '', species: '', breed: '', age: '', weight: '' });
+  const [vet, setVet] = useState([]);
+const [vetNotFound, setVetNotFound] = useState(false);
 
    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   
@@ -60,7 +62,7 @@ const [editForm, setEditForm] = useState({ name: '', species: '', breed: '', age
     const fetchPets = async () => {
       if (token) {
         try {
-          const response = await fetch(`https://vetserver.onrender.com/my-pets`, {
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/my-pets`, {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -76,36 +78,11 @@ const [editForm, setEditForm] = useState({ name: '', species: '', breed: '', age
   }, [token]);
   console.log(pets)
 
-  // Fetch medical records for each pet
-  // useEffect(() => {
-  //   const fetchMedicalRecords = async (petId) => {
-  //     if (token && petId) {
-  //       try {
-  //         const response = await fetch(`https://vetserver.onrender.com/by-pet/${petId}`, {
-  //           headers: {
-  //             'Authorization': `Bearer ${token}`,
-  //           },
-  //         });
-  //         const result = await response.json();
-  //         if (result.success) {
-  //           setMedicalRecords(result.data);
-  //         }
-  //       } catch (error) {
-  //         console.error('Error fetching medical records:', error);
-  //       }
-  //     }
-  //   };
-
-  //   pets.forEach((pet) => {
-  //     fetchMedicalRecords(pet._id); // Fetch medical records for each pet
-  //   });
-  // }, [pets, token]);
-
   useEffect(() => {
     const fetchMedicalRecords = async (petId) => {
       if (token && petId) {
         try {
-          const response = await fetch(`https://vetserver.onrender.com/appointment/${petId}`, {
+          const response = await fetch(`http://localhost:8080/appointment/${petId}`, {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -366,7 +343,7 @@ const handleDeletePet = async () => {
   if (!petIdToDelete) return;
 
   try {
-    const response = await fetch(`https://vetserver.onrender.com/pets/${petIdToDelete}`, {
+    const response = await fetch(`http://localhost:8080/pets/${petIdToDelete}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -392,33 +369,13 @@ console.log(result)
 };
 
 
-
-// const handleUpdatePet = async () => {
-//   if (!editingPet) return;
-//   try {
-//     const response = await fetch(`https://vetserver.onrender.com/pets/${editingPet}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': `Bearer ${token}`
-//       },
-//       body: JSON.stringify(editForm),
-//     });
-//     const result = await response.json();
-
-//     if (response.ok) {
-//       setPets(pets.map(p => p._id === editingPet ? { ...p, ...editForm } : p));
-//       // setShowPopup(true);
-//       setEditingPet(null);
-//       alert('Pet updated successfully!');
-//     } else {
-//       console.error('Update failed:', result.message);
-//     }
-//   } catch (error) {
-//     console.error('Error updating pet:', error);
-//   }
-// };
-
+const handleVetClick = (vet) => {
+  navigate('/vprofile', {
+      state: {
+        vet: vet, // Sending vet data to the 'VetProfile' page
+      },
+    });
+  };
 
   return (
     <div style={{ top: '0', width: '100%' }}>
@@ -529,9 +486,10 @@ console.log(result)
       </div>
     ))
 ) : (
+  <div>
   <p style={{
     fontSize: "12px",
-    marginLeft:isMobile?'100px': "200px",
+    marginLeft:isMobile?'50px': "200px",
     marginTop: "65px",
     height: "85px",
     fontStyle: "italic",
@@ -539,10 +497,12 @@ console.log(result)
   }}>
     No attended medical records available.
   </p>
+  </div>
 )}
     
   </div>
 </div>
+
        <div className='deleteicon' style={{ marginTop:isMobile?'-3px': '-190px', display: 'flex', gap: '10px' }}>
   {/* <FaEdit 
     // onClick={() => handleEditPet(pet)} 
@@ -603,7 +563,10 @@ console.log(result)
 </p>
 <div style={{ marginLeft: "25px" }}>
   {selectedRecord.appointment.medications?.[0]?.photos?.map((cert, index) => {
-const imageUrl = cert;
+const imageUrl = cert
+? cert
+: null;
+
     return (
       imageUrl && (
         <img
@@ -617,13 +580,55 @@ const imageUrl = cert;
   })}
 </div>
 
+{vetNotFound && (
+  <div style={{
+    position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+    backgroundColor: 'rgba(0,0,0,0.4)', display: 'flex',
+    justifyContent: 'center', alignItems: 'center', zIndex: 999
+  }}>
+    <div style={{
+      backgroundColor: '#fff', padding: '30px', borderRadius: '10px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.2)', textAlign: 'center'
+    }}>
+      <h3 style={{ marginBottom: '20px' }}>Vet Not Found</h3>
+      <p style={{ marginBottom: '20px', color: '#777' }}>
+        Sorry, no vet information is available for this appointment.
+      </p>
+      <button onClick={() => setVetNotFound(false)} style={{
+        padding: '10px 20px', backgroundColor: '#113047', color: '#fff',
+        border: 'none', borderRadius: '5px', cursor: 'pointer'
+      }}>
+        Close
+      </button>
+    </div>
+  </div>
+)}
 
 
-      <div style={{ marginTop: '50px', textAlign: 'right', fontSize: '12px', color: '#555' }}>
-        <p  >Attended by: <strong  >Dr. {selectedRecord.vet.name}</strong></p>
-        <p>Posted on: {new Date(selectedRecord.appointment.medications?.[0]?.createdAt).toLocaleDateString()}</p>
-        {/* toLocaleDateString */}
-      </div>
+     <div style={{ marginTop: '50px', textAlign: 'right', fontSize: '12px', color: '#555' }}>
+  <p>
+    Attended by:{" "}
+    <strong
+      onClick={() => {
+        const vet = selectedRecord.vet;
+        if (vet && vet.name && (vet.is_approved === true || vet.is_approved === "true")) {
+          navigate("/vprofile", { state: { vet } });
+        } else {
+          setVetNotFound(true);
+        }
+      }}
+      style={{ color: "#555", cursor: "pointer", textDecoration: "none",borderBottom:"2px solid#555" }}
+    >
+      Dr. {selectedRecord.vet?.name || "NA"}
+    </strong>
+  </p>
+
+  <p>
+    Posted on:{" "}
+    {new Date(selectedRecord.appointment.medications?.[0]?.createdAt).toLocaleDateString()}
+  </p>
+</div>
+
 
       <button onClick={() => setIsModalOpen(false)} style={{
         marginTop: '20px', padding: '10px 15px', backgroundColor: '#113047',
@@ -634,6 +639,32 @@ const imageUrl = cert;
     </div>
   </div>
 )}
+
+{vetNotFound && (
+  <div style={{
+    position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+    backgroundColor: 'rgba(0,0,0,0.4)', display: 'flex',
+    justifyContent: 'center', alignItems: 'center', zIndex: 999
+  }}>
+    <div style={{
+      backgroundColor: '#fff', padding: '30px', borderRadius: '10px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.2)', textAlign: 'center'
+    }}>
+      <h3 style={{ marginBottom: '20px' }}>Vet Not Found</h3>
+      <p style={{ marginBottom: '20px', color: '#777' }}>
+        Sorry, no vet information is available for this appointment.
+      </p>
+      <button onClick={() => setVetNotFound(false)} style={{
+        padding: '10px 20px', backgroundColor: '#113047', color: '#fff',
+        border: 'none', borderRadius: '5px', cursor: 'pointer'
+      }}>
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
 
 
 {showPopup && (

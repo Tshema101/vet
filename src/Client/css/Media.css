@@ -119,10 +119,10 @@
     
   }
   
-  .news {
+  /* .news {
     font-size: 3rem;
     margin-top: -350px;
-  }
+  } */
 }
 
 /* Large screens (desktops, 992px and up) */
@@ -135,9 +135,9 @@
     padding: 0 2rem;
   }
   
-  .news {
+  /* .news {
     font-size: 3.5rem;
-  }
+  } */
 }
 
 /* Small screens (phones, less than 576px) */
@@ -151,15 +151,15 @@
     margin-left: 0;
     margin-right: 0;
     padding: 0 0.5rem;
-    
+    margin-top: -10px;
   }
 
   
-  .news h2 {
+  /* .news h2 {
     font-size: 1rem;
     margin-top: 250px;
     margin-right: 800px;
-  }
+  } */
   
   .Section {
     padding: 1rem;

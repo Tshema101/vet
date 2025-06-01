@@ -10,7 +10,7 @@ import { MdReport } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import "../css/VetRegister.css"
 
-const VetProfile = () => {
+const Guestvetprofile = () => {
   const {email}= useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,16 +29,7 @@ const VetProfile = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reportText, setReportText] = useState('');
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-        
-        useEffect(() => {
-          const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-          };
-          window.addEventListener('resize', handleResize);
-          return () => window.removeEventListener('resize', handleResize);
-        }, []);
-
+  
   // Format the date to dd-MM-yyyy for API
   const formatDate = (date) => {
     const day = String(date.getDate()).padStart(2, '0');
@@ -191,7 +182,7 @@ const VetProfile = () => {
       navigate('/vets');
     }
   }, [vet, navigate]);
-console.log(vet)
+
   const isToday = (date) =>
     date.getDate() === currentDate.getDate() &&
     date.getMonth() === currentDate.getMonth() &&
@@ -294,8 +285,8 @@ console.log(vet)
   }
   alt={vet.name}
 style={{
-      width: isMobile?'150px':'209px',
-      height:isMobile?'140px': '213px',
+      width: '209px',
+      height: '213px',
       borderRadius: '50%',
       objectFit: 'cover',
       marginRight: '16px',
@@ -309,11 +300,7 @@ style={{
   />
               <div style={{ marginLeft: '20px', flex: '1', marginTop: '20px' }}>
                 <h2 style={{ margin: '0 0 5px' }}>{vet.name}
-                <MdReport 
-             style={{ marginLeft: '10px', color: '#ff4d4f', cursor: 'pointer' ,  marginBottom:"-2px"}}
-            size={20}
-             onClick={() => setIsModalOpen(true)}
- />
+
                 </h2>
                 <p style={{ color: '#777', margin: '0 0 8px' }}>{vet.specialist}</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '20px', marginLeft: '-7px' }}>
@@ -374,8 +361,9 @@ style={{
                   <h3 style={{ marginBottom: '20px' }}>Certificates</h3>
 
                   {vet.certifications.map((cert, index) => {
-                    const imageUrl = cert?cert:null;
-                    
+                    const imageUrl = cert
+                      ? cert
+                      : null;
 
                     return (
                       <div
@@ -655,7 +643,6 @@ style={{
           </div>
         </div>
 
-<RateVetForm vetId={vet._id}  className="review"/>
 {/* 
   {/* report Modal  */}
  {isModalOpen && (
@@ -907,4 +894,4 @@ style={{
   );
 };
 
-export default VetProfile;
+export default Guestvetprofile;

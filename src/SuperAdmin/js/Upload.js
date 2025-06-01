@@ -43,7 +43,7 @@ export default function Upload() {
 
     const uploadImage = async (base64EncodedImage) => {
         try {
-            const response = await fetch('https://vetserver.onrender.com/api/upload', {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/upload`, {
                 method: 'POST',
                 body: JSON.stringify({ data: base64EncodedImage }),
                 headers: { 'Content-Type': 'application/json' },

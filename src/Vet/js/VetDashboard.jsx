@@ -32,7 +32,7 @@ const VetDashboard = () => {
 
     const fetchAppointments = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/appointments/vet/${vetId}`);
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/appointments/vet/${vetId}`);
         const data = await response.json();
         
         console.log("Fetched appointments:", data); // Debug log

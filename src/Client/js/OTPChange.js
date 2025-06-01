@@ -58,7 +58,7 @@ const OTPChange = () => {
       const email = localStorage.getItem("email");
 
       const response = await axios.post(
-        `https://vetserver.onrender.com/verify-forgot-otp/${email}`,
+        `${process.env.REACT_APP_BASE_URL}/verify-forgot-otp/${email}`,
         { otp: otp.join("") } // Send OTP as a string
       );
 
@@ -78,7 +78,7 @@ const OTPChange = () => {
   const handleResendOTP = async () => {
     try {
       const response = await axios.post(
-        "https://vetserver.onrender.com/forgot-password",
+        `${process.env.REACT_APP_BASE_URL}/forgot-password`,
         {
           email,
         }
@@ -93,7 +93,7 @@ const OTPChange = () => {
   return (
     <div className="otp-container">
       <div className="left-side">
-        <img src={logo} alt="VetConnect Logo" className="logo" />
+        <img src={logo} alt="VetConnect Logo" className="ologo" />
         <h2>Welcome to VetConnect</h2>
         <p>Where Care Meets Convenience!</p>
       </div>

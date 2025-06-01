@@ -33,7 +33,7 @@ const Search = () => {
             specialist: category,
           }).toString();
       
-          const response = await fetch(`https://vetserver.onrender.com/vets?${query}`);
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/vets?${query}`);
           const data = await response.json();
       
           console.log("Approved Vets:", data.approved);
@@ -66,6 +66,7 @@ const Search = () => {
     },
     sectionTitle1: {
       display: 'flex',
+      fontWeight:'800',
       alignItems: 'center',
       fontSize: isMobile ? '1.5rem' : '2rem',
       margin: 0,
@@ -134,7 +135,7 @@ const Search = () => {
   return (
     <div style={styles.searchSection}>
       <h2 style={styles.sectionTitle1}>
-        Find <p style={{ fontSize: '2rem', color: '#A52727', marginLeft: '7px', marginRight: '4px' }}>Vets</p> near you
+        Find <p style={{ fontSize:isMobile?'1.5rem': '2rem', color: '#A52727', marginLeft: '7px', marginRight: '4px', fontWeight:'800' }}>Vets</p> near you
       </h2>
       <p style={styles.sectionSubtitle1}>Connect with online veterinary care.</p>
 

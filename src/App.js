@@ -49,7 +49,7 @@ import Refund from './Client/js/Refund.js';
 import Reschedule from './Client/js/Reschedule.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import Booking from './Client/js/Booking.js';
-
+import Guestvetprofile from './Client/js/guestvetprofile.js'
 import VetApp from './Admin/js/VetApp.jsx';
 import Report from './Admin/js/Report.jsx';
 
@@ -114,8 +114,7 @@ function App() {
         <Route path="/petregister" element={<ProtectedRoute><PetRegister /></ProtectedRoute>} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/footer" element={<Footer />} />
-
-
+<Route path="/guestvetprofile" element={<Guestvetprofile/>} />
         {/* SUPERADMIN */}
 
         <Route path="/SuperAdmindashboard" element={<SuperAdminDashboard />} />

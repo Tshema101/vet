@@ -104,7 +104,7 @@ const SignupForm = () => {
     if (validateForm()) {
       console.log('Form validation passed, sending API request...');
       try {
-        const response = await fetch('https://vetserver.onrender.com/signup', {
+        const response = await fetch('http://localhost:8080/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ const SignupForm = () => {
     <div>
       <div className="signup-container">
         <div className="left-side">
-          <img src={logo} alt="VetConnect Logo" className="logo" style={{marginLeft:"-20px"}} />
+          <img src={logo} alt="VetConnect Logo" className="slogo" style={{marginLeft:"15px"}} />
           <h2>Welcome to VetConnect</h2>
           <p>Where Care Meets Convenience!</p>
         </div>

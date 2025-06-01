@@ -36,12 +36,20 @@ const Testimonial = () => {
     if (i === (index - 1 +TestimonialList.length) % TestimonialList.length) return "testimonial-card left";
     return "testimonial-card hidden";
   };
+
   useEffect(() => {
     const fetchExpertise = async () => {
   
       try {
-        const response = await axios.get("https://vetserver.onrender.com/getTestimonials");
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/getTestimonials`);
         setTestimonialList(response.data.testimonials);
+        
+
+// Set initial index to show last testimonial on left
+        // if (TestimonialList.length > 0) {
+        //   setIndex(1); // This makes testimonial at index 0 appear on left
+        // }
+
       } catch (error) {
         setError("cannot display testimonials ");
       } finally {
@@ -51,6 +59,11 @@ const Testimonial = () => {
   
     fetchExpertise();
   }, []);
+
+   // Helper function to get the correct testimonial index accounting for array bounds
+  const getTestimonialIndex = (i) => {
+    return (i + TestimonialList.length) % TestimonialList.length;
+  };
 
   return (
     <div className="testimonial-section" style={{ marginTop: "100px" }}>
@@ -75,6 +88,42 @@ const Testimonial = () => {
     </div>
 ))}
         </div>
+
+       {/* <div className="testimonial-cards-wrapper">
+          {loading ? (
+            <div className="testimonial-card center">
+              <p>Loading testimonials...</p>
+            </div>
+          ) : error ? (
+            <div className="testimonial-card center">
+              <p>{error}</p>
+            </div>
+          ) : TestimonialList.length > 0 ? (
+            <>
+              <div className="testimonial-card left">
+                <p className="testimonial-text">“{TestimonialList[getTestimonialIndex(index - 1)].Review}”</p>
+                <hr style={{marginTop:"30px"}} />
+                <p className="testimonial-author">- {TestimonialList[getTestimonialIndex(index - 1)].name}</p>
+              </div>
+              
+              <div className="testimonial-card center">
+                <p className="testimonial-text">“{TestimonialList[index].Review}”</p>
+                <hr style={{marginTop:"30px"}} />
+                <p className="testimonial-author">- {TestimonialList[index].name}</p>
+              </div>
+              
+              <div className="testimonial-card right">
+                <p className="testimonial-text">“{TestimonialList[getTestimonialIndex(index + 1)].Review}”</p>
+                <hr style={{marginTop:"30px"}} />
+                <p className="testimonial-author">- {TestimonialList[getTestimonialIndex(index + 1)].name}</p>
+              </div>
+            </>
+          ) : (
+            <div className="testimonial-card center">
+              <p>No testimonials available</p>
+            </div>
+          )}
+        </div>   */}
 
         <button className="testimonial-arrow right" onClick={nextSlide}>
           <FaArrowRight />

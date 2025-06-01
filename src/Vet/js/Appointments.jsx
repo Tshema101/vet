@@ -33,11 +33,11 @@ const Appointments = () => {
       console.log('Fetching appointments for:', {
         vetId,
         formattedDate,
-        url: `http://localhost:8080/appointments/vet/${vetId}/date/${formattedDate}`
+        url: `${process.env.REACT_APP_BASE_URL}/appointments/vet/${vetId}/date/${formattedDate}`
       });
 
       const response = await fetch(
-        `http://localhost:8080/appointments/vet/${vetId}/date/${formattedDate}`
+        `${process.env.REACT_APP_BASE_URL}/appointments/vet/${vetId}/date/${formattedDate}`
       );
       const data = await response.json();
       
@@ -50,7 +50,7 @@ const Appointments = () => {
       }
 
        // Fetch all appointments for total count
-      const allResponse = await fetch(`http://localhost:8080/appointments/vet/${vetId}`);
+      const allResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/appointments/vet/${vetId}`);
       const allData = await allResponse.json();
       
       console.log("All appointments:", allData);
@@ -135,10 +135,10 @@ const Appointments = () => {
   }
 console.log(formData)
   try {
-    console.log('Submitting to:', `http://localhost:8080/appointments/${appointmentId}`);
+    console.log('Submitting to:', `${process.env.REACT_APP_BASE_URL}/appointments/${appointmentId}`);
     
     const response = await fetch(
-      `http://localhost:8080/appointments/${appointmentId}`,
+      `${process.env.REACT_APP_BASE_URL}/appointments/${appointmentId}`,
       {
         method: 'POST',
         body: formData

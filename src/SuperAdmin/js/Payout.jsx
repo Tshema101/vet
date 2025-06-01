@@ -26,7 +26,7 @@ const PayOut = () => {
       }
 
       try {
-        const response = await axios.get("https://vetserver.onrender.com/vets", {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/vets`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -27,7 +27,7 @@ const ExpertiseMngt = () => {
       }
   
       try {
-        const response = await axios.get("https://vetserver.onrender.com/getExpertise", {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/getExpertise`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in request headers
           },
@@ -48,7 +48,7 @@ const ExpertiseMngt = () => {
 useEffect(() => {
   const fetchUserCounts = async () => {
     try {
-      const response = await fetch("https://vetserver.onrender.com/roles/user-count");
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/roles/user-count`);
       const data = await response.json();
       if (Array.isArray(data)) {
         setRoleCounts(data);

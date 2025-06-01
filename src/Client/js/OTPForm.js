@@ -60,7 +60,7 @@ const OTPForm = () => {
   
       try {
         // Send OTP and email to the backend for verification
-        const response = await fetch('https://vetserver.onrender.com/verify-otp', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/verify-otp`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ const popupStyles = {
   return (
     <div className="otp-container">
       <div className="left-side">
-        <img src={logo} alt="VetConnect Logo" className="logo" />
+        <img src={logo} alt="VetConnect Logo" className="ologo" />
         <h2>Welcome to VetConnect</h2>
         <p>Where Care Meets Convenience!</p>
       </div>

@@ -22,7 +22,7 @@ const Booking= () => {
             specialist: category,
           }).toString();
       
-          const response = await fetch(`https://vetserver.onrender.com/vets?${query}`);
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/vets?${query}`);
           const data = await response.json();
       
           console.log("Approved Vets:", data.approved);

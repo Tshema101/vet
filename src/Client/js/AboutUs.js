@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import "../css/AboutUs.css"; // Optional external CSS file for styles
 import abt1 from "../Images/abt1.png"; // Replace with your image path
@@ -11,6 +11,16 @@ import Banner from "./Banner"; // Import your Banner component
 import Footer from "./Footer"; // Import your Footer component
 const AboutUs = () => {
   const [activeTab, setActiveTab] = useState("who");
+       const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+      
+      useEffect(() => {
+        const handleResize = () => {
+          setIsMobile(window.innerWidth < 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+  
   // Styles
   const styles = {
 
@@ -24,12 +34,13 @@ const AboutUs = () => {
       zIndex: 1,
     },
     about: {
-        fontSize: '3.5rem',
+        fontSize:isMobile?'2rem': '3.5rem',
         color: 'white',
         fontWeight: 'bold',
         marginBottom: '2rem',
-        marginTop: '-350px',
+        marginTop:'-350px',
       },
+
 }
 
   const renderContent = () => {
@@ -96,10 +107,10 @@ const AboutUs = () => {
       </div>
       
       {/* Welcome Section */}
-      <div style={{ ...styles.wSection, position: 'relative', zIndex: 1, marginLeft: '180px' }}>
+      <div style={{ ...styles.wSection, position: 'relative', zIndex: 1, marginLeft:'180px' }}>
         
         
-        <h2 style={styles.about} className="about">About Us</h2>
+        <h2 style={{...styles.about, marginLeft:isMobile?'-185px':'0px', marginTop:isMobile?'-9rem':'-350px'}} className="about">About Us</h2>
      
       </div>
      
@@ -113,7 +124,7 @@ const AboutUs = () => {
           <img src={abt4} alt="Vet Care 4" />
         </div>
 
-        <div className="about-text" style={{ marginTop: "20px", gap: "20px", fontSize: "16px", marginLeft: "20px" }}>
+        <div className="about-text" style={{ marginTop: "20px", gap: "20px", fontSize: "16px", marginLeft:isMobile?'-10px': "20px" }}>
           <div className="tabs" style={{ marginBottom: "20px", fontWeight: "bold" }}>
             
             <button onClick={() => setActiveTab("who")} className={activeTab === "who" ? "active" : ""} style={{fontSize: "20px",fontWeight: "bold"}}>

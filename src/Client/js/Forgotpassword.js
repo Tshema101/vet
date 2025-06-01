@@ -52,7 +52,7 @@ const ForgotPassword = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://vetserver.onrender.com/forgot-password",
+          `${process.env.REACT_APP_BASE_URL}/forgot-password`,
           {
             email: formData.email,
           }
@@ -175,7 +175,7 @@ const popupStyles = {
       <div className="vertical-line"></div>
 
       <div className="welcome-section">
-        <img src={logo} alt="VetConnect Logo" className="logo" />
+        <img src={logo} alt="VetConnect Logo" className="flogo" />
         <h2>Welcome to VetConnect</h2>
         <p>Where Care Meets Convenience!</p>
       </div>

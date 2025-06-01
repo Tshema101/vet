@@ -96,7 +96,7 @@ const VetCareSteps = () => {
           .responsive-image-container img {
             position: relative !important;
             margin: 0 auto !important;
-            width: 80% !important;
+            width: 70% !important;
             height: auto !important;
             object-fit: cover;
           }
@@ -121,7 +121,7 @@ const VetCareSteps = () => {
       >
         {/* Left Side Steps */}
         <div className="responsive-left" style={{ flex: "1", minWidth: "200px" }}>
-          <h2 style={{ color: "#002B45", marginBottom: "30px" }}>
+          <h2 style={{ color: "#002B45", marginBottom: "30px", fontWeight:"800" }}>
             Get better vet care & meet with a vet <br /> in just minutes.
           </h2>
 
@@ -182,12 +182,12 @@ const VetCareSteps = () => {
             style={{
               position: "absolute",
               bottom: "0",
-              left: "80px",
+              left:isMobile?'0': "80px",
               marginBottom: "30px",
               width: "240px",
               height: "250px",
               objectFit: "cover",
-              marginRight:isMobile?'100px':'0px',
+              marginLeft:isMobile?'-100px':'0px',
             }} />
         </div>
       </div>

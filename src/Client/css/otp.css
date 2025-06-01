@@ -38,7 +38,7 @@
     /* background: #f8f9fa; */
   }
   
-  .logo {
+  .ologo {
     width: 350px;
     height: 350px;
     border-radius: 50%;
@@ -210,7 +210,7 @@
     padding: 20px;
   }
 
-  .logo {
+  .ologo {
     width: 220px;
     height: 220px;
   }
@@ -237,7 +237,7 @@
     font-size: 1rem;
   }
 
-  .logo {
+  .ologo {
     width: 180px;
     height: 180px;
   }
@@ -252,8 +252,42 @@
   }
 
   .otp-input {
-    width: 25vw; /* Further increase width for very small screens */
-    height: 15vh; /* Adjust height for better fit */
+    width: 11vw; /* Further increase width for very small screens */
+    height: 6vh; /* Adjust height for better fit */
+  }
+
+  .login-text {
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (max-width: 375px) {
+  .left-side h2 {
+    font-size: 1.5rem;
+  }
+
+  .left-side p {
+    font-size: 1rem;
+  }
+
+  .ologo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .right-side {
+    padding: 15px;
+  }
+
+  .signup-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .otp-input {
+    width: 11vw; /* Further increase width for very small screens */
+    height: 6vh; /* Adjust height for better fit */
   }
 
   .login-text {

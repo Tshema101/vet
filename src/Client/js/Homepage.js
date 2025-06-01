@@ -23,7 +23,7 @@ import Services from './Services';
 import Process from './Process';
 import WelcomeSection from './WelcomeSection';
 
-const Homeage = () => {
+const Homepage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = React.useState('');
   const [category, setCategory] = React.useState('pets');
@@ -211,11 +211,11 @@ const Homeage = () => {
         flexDirection:isMobile?'column':"row"
       },
       whyTitle: {
-        fontSize: '2rem',
-        color: '#2c3e50',
+        fontSize:isMobile?'1.5rem': '2rem',
+        color: '#806E63',
         marginBottom: '2rem',
-        fontWeight:'750',
-        marginLeft:'30px'
+        fontWeight:'800',
+        marginLeft:isMobile?'-10px':'30px'
       },
 
       whyContent: {
@@ -225,7 +225,10 @@ const Homeage = () => {
         gap: '3rem',
         maxWidth: '1200px',
         marginLeft: '80px',
-        textAlign: 'left'
+        textAlign: 'left',
+        flexDirection:isMobile?'column':"row"
+
+
       },
 
      ImageWrapper: {
@@ -237,20 +240,27 @@ const Homeage = () => {
         flex: '1',
         // minWidth: '300px',
         // maxWidth: '500px',
-        marginLeft: '200px',
+        marginTop:isMobile?'400px':'0',
+        marginLeft:isMobile?'10px': '200px',
+
 
       },
       whyText: {
         color: '#7f8c8d',
         lineHeight: '1.6',
-        marginBottom: '1.5rem',
-        marginLeft: '200px',
+        marginBottom: isMobile?'5rem':'1.5rem',
+        marginTop:isMobile?'-80px':'0',
+        marginLeft:isMobile?'-70px': '200px',
       },
       featuresList: {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
         gap: '1rem',
-        marginTop: '2rem'
+        marginTop:isMobile?'-23rem': '2rem',
+        marginLeft:isMobile?'-70px': '0',
+        marginBottom:isMobile?'-70px': '0',
+
+
       },
       featureItem: {
         display: 'flex',
@@ -365,7 +375,7 @@ const Homeage = () => {
     <div style={styles.page }>
    
       {/* Banner */}
-      <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '650px', zIndex: 0}}>
+      <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '650px', zIndex: 0,border:'none'}}>
       <Banner  />
       </div>
       {/* Welcome Section */}
@@ -453,7 +463,7 @@ const Homeage = () => {
       </div>
 
       {/* Top Rated Vets Section */}
-      <h2 style={styles.sectionTitle}>Best-Rated <p style={{fontSize:'2rem', color:'#A52727', marginLeft:'7px'}}>Vets</p></h2>
+      <h2 style={styles.sectionTitle}>Best-Rated <p style={{fontSize:isMobile?'1.5rem':'2rem', color:'#A52727', marginLeft:'7px'}}>Vets</p></h2>
       <p style={styles.sectionSubtitle}>Expert Veterinary Specialists</p>
       
 <div > <TopRatedVets / ></div>
@@ -480,7 +490,7 @@ const Homeage = () => {
       <img
         src={whypic}
         alt="Vet Connect"
-        style={{width: '500px', height: '500px',  objectFit: 'cover'}}
+        style={{width:isMobile?'420px': '500px', height:isMobile?'400px': '500px',  objectFit: 'cover', marginLeft:isMobile?'-60px':'0'}}
       />
     </div>
 
@@ -570,4 +580,4 @@ const Homeage = () => {
 
 
 
-export default Homeage;
+export default Homepage;

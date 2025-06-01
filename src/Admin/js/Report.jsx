@@ -25,7 +25,7 @@ const Report = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/getReports", {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/getReports`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

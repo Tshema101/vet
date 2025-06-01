@@ -69,7 +69,7 @@ const Review = () => {
     }
 
     try {
-      const response = await fetch("https://vetserver.onrender.com/addTestimonial", {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/addTestimonial`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

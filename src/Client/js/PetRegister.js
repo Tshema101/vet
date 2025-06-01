@@ -21,7 +21,7 @@ const PetRegister = () => {
           setUserEmail(email);
         }
         // if (userId && token) {
-        //   fetch(`https://vetserver.onrender.com/pets?userId=${userId}`, {
+        //   fetch(`http://localhost:8080/pets?userId=${userId}`, {
         //     headers: {
         //       'Authorization': `Bearer ${token}`,
         //     },
@@ -103,7 +103,7 @@ useEffect(() => {
     const token = localStorage.getItem('authToken'); // Changed to "authToken"
   
     try {
-      const response = await fetch('https://vetserver.onrender.com/petregister', {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/petregister`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

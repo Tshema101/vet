@@ -39,7 +39,7 @@ const PaymentLog = () => {
       const formattedDate = `${day}-${month}-${year}`;
      
       const response = await fetch(
-        `http://localhost:8080/appointments/vet/${vetId}/date/${formattedDate}`
+        `${process.env.REACT_APP_BASE_URL}/appointments/vet/${vetId}/date/${formattedDate}`
       );
 
       if (!response.ok) {

@@ -27,7 +27,7 @@ const ManageVet = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/vets", {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/vets`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -51,7 +51,7 @@ const ManageVet = () => {
   const handleConfirmDelete = async () => {
     const token = localStorage.getItem("authToken");
     try {
-      const response = await axios.delete(`http://localhost:8080/deleteVets/${vetToDelete}`, {
+      const response = await axios.delete(`${process.env.REACT_APP_BASE_URL}/deleteVets/${vetToDelete}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

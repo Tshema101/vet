@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/WelcomeSection.css'; // Import your CSS file for styling
@@ -7,6 +9,8 @@ const WelcomeSection = () => {
   const [animate, setAnimate] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Add logged in state
   const navigate = useNavigate();
+
+
   // Function to check auth status
   const checkAuth = () => {
     const token = localStorage.getItem('authToken');

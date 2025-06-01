@@ -26,7 +26,7 @@ const DiseaseOutbreak = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const res = await fetch("https://vetserver.onrender.com/content");
+        const res = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
         const data = await res.json();
         const filtered = data.filter((item) => item.contentType === "disease").reverse();
         setContentData(filtered);
@@ -95,8 +95,8 @@ const DiseaseOutbreak = () => {
     if (image) formData.append("image", image);
 
     const url = isEditMode
-      ? `https://vetserver.onrender.com/content/${selectedItem._id}`
-      : "https://vetserver.onrender.com/content";
+      ? `${process.env.REACT_APP_BASE_URL}/content/${selectedItem._id}`
+      : `${process.env.REACT_APP_BASE_URL}/content`;
     const method = isEditMode ? "PUT" : "POST";
 
     try {
@@ -107,7 +107,7 @@ const DiseaseOutbreak = () => {
 
       if (!response.ok) throw new Error("Failed to submit");
 
-      const updatedContent = await fetch("https://vetserver.onrender.com/content");
+      const updatedContent = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
       const newData = await updatedContent.json();
       const filtered = newData.filter((item) => item.contentType === "disease").reverse();
       setContentData(filtered);
@@ -139,7 +139,7 @@ const DiseaseOutbreak = () => {
   const handleConfirmDelete = async () => {
     try {
       const response = await fetch(
-        `https://vetserver.onrender.com/content/${selectedItem._id}`,
+        `${process.env.REACT_APP_BASE_URL}/content/${selectedItem._id}`,
         {
           method: "DELETE",
         }
@@ -147,7 +147,7 @@ const DiseaseOutbreak = () => {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      const updatedContent = await fetch("https://vetserver.onrender.com/content");
+      const updatedContent = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
       const newData = await updatedContent.json();
       setContentData(newData);
 

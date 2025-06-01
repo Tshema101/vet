@@ -1,3 +1,6 @@
+
+
+
 import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -105,7 +108,7 @@ const handleSubmit = async (e) => {
   const isValid = validate();
   if (isValid) {
     try {
-      const response = await fetch('https://vetserver.onrender.com/refund', {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/refund`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

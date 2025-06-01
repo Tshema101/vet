@@ -15,12 +15,12 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState('');
-
+  
 
   const validateForm = () => {
     let newErrors = {};
 
-
+    
 
     // Email validation
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[a-zA-Z]{2,}$/;
@@ -65,54 +65,54 @@ const Login = () => {
     }
   };
 
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('login triggered');
     setApiError(''); // Clear previous API errors
-
+  
     if (validateForm()) {
       console.log('login validation passed, sending API request...');
       try {
-        const response = await fetch('https://vetserver.onrender.com/login', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData), // Send email and password
         });
-
+  
         const responseData = await response.json(); // Parse JSON response
-        console.log(responseData)
+     console.log(responseData)
         if (response.ok) {
           console.log('login successful');
           // Store token in localStorage
-          localStorage.setItem('authToken', responseData.token);
-          localStorage.setItem('userRole', responseData.userData.role_id.role_type);
+        localStorage.setItem('authToken', responseData.token);
+        localStorage.setItem('userRole', responseData.userData.role_id.role_type); 
 
-          // After storing the token
-          const decodedToken = jwtDecode(responseData.token);
-          localStorage.setItem('userName', decodedToken.name);
-          localStorage.setItem('userEmail', decodedToken.email);
-          localStorage.setItem('userId', decodedToken.userId || decodedToken._id); // Adjust based on your backend
+// After storing the token
+const decodedToken = jwtDecode(responseData.token);
+localStorage.setItem('userName', decodedToken.name);
+localStorage.setItem('userEmail', decodedToken.email);
+localStorage.setItem('userId', decodedToken.userId || decodedToken._id); // Adjust based on your backend
 
-          const role = localStorage.getItem('userRole')
-          console.log(role)
-          switch (role) {
-            case 'client':
-              navigate('/homepage');
-              break;
-            case 'superAdmin':
-              navigate('/SuperAdmindashboard');
-              break;
-            case 'vet':
-              navigate('/vetDashboard');
-              break;
-            case 'expertise':
-              navigate('/adminDashboard');
-              break;
-
-          }
+        const role = localStorage.getItem('userRole')
+        console.log(role)
+        switch (role) {
+          case 'client':
+            navigate('/homepage');
+            break;
+          case 'superAdmin':
+            navigate('/SuperAdmindashboard');
+            break;
+          case 'vet':
+            navigate('/vetDashboard');
+            break;
+          case 'expertise':
+            navigate('/adminDashboard');
+            break;
+          
+        }
         } else {
           console.log('login failed:', responseData);
           setApiError(responseData.message || 'Invalid credentials. Please try again.');
@@ -123,7 +123,7 @@ const Login = () => {
       }
     }
   };
-
+  
 
 
   return (
@@ -134,7 +134,7 @@ const Login = () => {
         <p className="subtitle">TO CONTINUE</p>
         {apiError && <div className="api-error-message">{apiError}</div>}
         <form onSubmit={handleSubmit} className="login-form">
-
+    
           <div className={`input-group ${errors.email ? 'error' : ''}`}>
             <EnvelopeIcon className="icon" />
             <input
@@ -172,13 +172,13 @@ const Login = () => {
 
       {/* Left-side content moved to the right */}
       <div className="left-side">
-        <img src={logo} alt="VetConnect Logo" className="logo" style={{ marginLeft: "-20px" }} />
+        <img src={logo} alt="VetConnect Logo" className="logoo" style={{margin:"-20px", marginBottom:'25px'}} />
         <h2>Welcome to VetConnect</h2>
         <p>Where Care Meets Convenience!</p>
       </div>
     </div>
-
+    
   );
 };
 
-export default Login;
+export default Login;

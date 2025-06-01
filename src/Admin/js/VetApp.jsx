@@ -32,7 +32,7 @@ const VetApp = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:8080/vets", {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/vets`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -68,7 +68,7 @@ const VetApp = () => {
       }
 
       await axios.post(
-        "http://localhost:8080/approve-vet",
+        `${process.env.REACT_APP_BASE_URL}/approve-vet`,
         {
           email: selectedVet.email,
           isApproved: true,
@@ -110,8 +110,7 @@ const VetApp = () => {
         return;
       }
 
-      await axios.post(
-        "http://localhost:8080/approve-vet",
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/approve-vet`,
         {
           email: selectedVet.email,
           isApproved: false,

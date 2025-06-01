@@ -45,13 +45,13 @@ const VetProfile = () => {
         const userId = decodedToken.userId;
 
         // Fetch vet profile data
-        const profileResponse = await fetch(`http://localhost:8080/vets/${userId}`, { headers });
+        const profileResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/vets/${userId}`, { headers });
         if (!profileResponse.ok) throw new Error('Failed to fetch vet data');
         const profileData = await profileResponse.json();
         setVetData(profileData.data);
 
         // Fetch reviews data
-        const reviewsResponse = await axios.get(`http://localhost:8080/vet/${userId}/getreviews`, {
+        const reviewsResponse = await axios.get(`${process.env.REACT_APP_BASE_URL}/vet/${userId}/getreviews`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const reviewsData = reviewsResponse.data;
@@ -87,7 +87,7 @@ const VetProfile = () => {
   
     try {
       const response = await axios.post(
-        `http://localhost:8080/vets/${userId}/profile-picture`,
+        `${process.env.REACT_APP_BASE_URL}/vets/${userId}/profile-picture`,
         formData,
         {
           headers: {
@@ -101,7 +101,7 @@ const VetProfile = () => {
   
       if (response.data.success) {
         // Refetch the vet data to get the updated profile picture
-        const profileResponse = await fetch(`http://localhost:8080/vets/${userId}`, { 
+        const profileResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/vets/${userId}`, { 
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'

@@ -27,7 +27,7 @@ const FAQSection = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const res = await fetch("https://vetserver.onrender.com/content");
+        const res = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
         const data = await res.json();
         const filtered = data
           .filter((item) => item.contentType === "faq")
@@ -92,8 +92,8 @@ const FAQSection = () => {
     formData.append("contentType", "faq"); // Add this line to set contentType;
 
     const url = isEditMode
-      ? `https://vetserver.onrender.com/content/${selectedItem._id}`
-      : "https://vetserver.onrender.com/content";
+      ? `${process.env.REACT_APP_BASE_URL}/content/${selectedItem._id}`
+      : `${process.env.REACT_APP_BASE_URL}/content`;
     const method = isEditMode ? "PUT" : "POST";
 
     try {
@@ -104,7 +104,7 @@ const FAQSection = () => {
 
       if (!response.ok) throw new Error("Failed to submit");
 
-      const updatedContent = await fetch("https://vetserver.onrender.com/content");
+      const updatedContent = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
       const allData = await updatedContent.json();
       const filteredFAQs = allData
         .filter((item) => item.contentType === "faq")
@@ -136,7 +136,7 @@ const FAQSection = () => {
   const handleConfirmDelete = async () => {
     try {
       const response = await fetch(
-        `https://vetserver.onrender.com/content/${selectedItem._id}`,
+        `${process.env.REACT_APP_BASE_URL}/content/${selectedItem._id}`,
         {
           method: "DELETE",
         }
@@ -144,7 +144,7 @@ const FAQSection = () => {
 
       if (!response.ok) throw new Error("Failed to delete");
 
-      const updatedContent = await fetch("https://vetserver.onrender.com/content");
+      const updatedContent = await fetch(`${process.env.REACT_APP_BASE_URL}/content`);
       const allData = await updatedContent.json();
       const filteredFAQs = allData
         .filter((item) => item.contentType === "faq")

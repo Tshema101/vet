@@ -1,3 +1,9 @@
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle, FaPlus, FaCalendarCheck, FaCalendarAlt, FaClock, FaNotesMedical, FaExclamationCircle, FaUserMd, FaDollarSign, FaChevronLeft, FaChevronRight, FaUser, FaPaw, FaMapMarkerAlt, FaIdCard } from 'react-icons/fa';
@@ -101,7 +107,7 @@ console.log('date', selectedDate)
     try {
       const token = localStorage.getItem('authToken');
       await axios.put(
-        `https://vetserver.onrender.com/appointments/${appointmentToCancel.appointment._id}/cancel`,
+        `${process.env.REACT_APP_BASE_URL}/appointments/${appointmentToCancel.appointment._id}/cancel`,
         {},
         {
           headers: {
@@ -141,7 +147,7 @@ console.log("user",userId)
 
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get(`https://vetserver.onrender.com/appointments/${userId}`, {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/appointments/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -167,14 +173,14 @@ const day = String(selectedDate.getDate()).padStart(2, '0');
   const formattedDate = `${day}-${month}-${year}`;
 
   console.log("Formatted date:", formattedDate); // Should be in DD-MM-YYYY
-  // console.log("Fetching availability from:", `https://vetserver.onrender.com/availability/date/${selectedAppointment.vet._id}/${formattedDate}`);
+  // console.log("Fetching availability from:", `http://localhost:8080/availability/date/${selectedAppointment.vet._id}/${formattedDate}`);
   const fetchVetAvailability = async (vetId, date) => {
     if (!vetId) return;
     
     try {
       // const formattedDate = date.toISOString().split('T')[0];
       const response = await axios.get(
-        `https://vetserver.onrender.com/availability/date/${vetId}/${formattedDate}`
+        `${process.env.REACT_APP_BASE_URL}/availability/date/${vetId}/${formattedDate}`
       );
       // console.log(response)
       setVetAvailability(response.data.data.slots);
@@ -189,7 +195,7 @@ const day = String(selectedDate.getDate()).padStart(2, '0');
     const fetchReviews = async () => {
       if (!vetId) return;
       try {
-        const response = await axios.get(`https://vetserver.onrender.com/vet/${vetId}/getreviews`);
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/vet/${vetId}/getreviews`);
         setReviews(response.data.reviews || []);
         setAverageRating(response.data.averageRating);
         setTotalReviews(response.data.totalReviews || 0);
@@ -208,15 +214,55 @@ const day = String(selectedDate.getDate()).padStart(2, '0');
 
 
 console.log(vetAvailability)
-  const handleRescheduleClick = (appointment) => {
-    console.log(appointment)
-    setSelectedAppointment(appointment);
-    setSelectedDate(new Date(appointment.appointment.appointmentDate));
-    const vetId = appointment.vet._id;
-    console.log(vetId)
-    fetchVetAvailability(vetId, formattedDate);
-    setShowRescheduleModal(true);
-  };
+
+  // const handleRescheduleClick = (appointment) => {
+  //   console.log(appointment)
+  //   setSelectedAppointment(appointment);
+  //   setSelectedDate(new Date(appointment.appointment.appointmentDate));
+  //   const vetId = appointment.vet._id;
+  //   console.log(vetId)
+  //   fetchVetAvailability(vetId, formattedDate);
+  //   setShowRescheduleModal(true);
+
+  // // const vet = appointment.appointment.vet;
+  // //       if (vet && vet.name && (vet.is_approved === true || vet.is_approved === "true")) {
+  // //          setShowRescheduleModal(true);
+  // //       } else {
+  // //    setShowRescheduleModal(false);
+  // //       }
+
+  // };
+
+//   const handleRescheduleClick = (appointment) => {
+//   const vet = appointment.vet;
+
+//   // If vet is deleted, don't open reschedule modal
+//   if (vet && vet.is_approved === "deleted") {
+//     alert("This vet is no longer available for rescheduling.");
+//     return;
+//   }
+
+//   setSelectedAppointment(appointment);
+//   setSelectedDate(new Date(appointment.appointment.appointmentDate));
+
+//   const vetId = vet._id;
+//   fetchVetAvailability(vetId, formattedDate);
+//   setShowRescheduleModal(true);
+// };
+
+const handleRescheduleClick = (appointment) => {
+  const vet = appointment.vet;
+
+  setSelectedAppointment(appointment);
+  setSelectedDate(new Date(appointment.appointment.appointmentDate));
+
+  const vetId = vet._id;
+  fetchVetAvailability(vetId, formattedDate);
+  setShowRescheduleModal(true);
+};
+
+
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -236,7 +282,7 @@ console.log(vetAvailability)
     try {
       const token = localStorage.getItem('authToken');
       const response = await axios.put(
-        `https://vetserver.onrender.com/appointments/${selectedAppointment.appointment._id}/reschedule`,
+        `${process.env.REACT_APP_BASE_URL}/appointments/${selectedAppointment.appointment._id}/reschedule`,
         {
           newDate: formattedDate,
           newStartTime: selectedTimeSlot.startTime,
@@ -368,40 +414,41 @@ console.log(vetAvailability)
 
   const rescheduleModalStyles = {
     overlay: {
-      position: 'fixed',
+      position:'fixed',
       top: 0,
       left: 0,
       width: '100vw',
-      height: isMobile?'auto':'100vh',
+      height: '100vh',
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 1000,
-      overflowY:isMobile?'visible': 'hidden',
+    alignItems: isMobile ? 'flex-start' : 'center',
+    zIndex: 1000,
+    overflowY: isMobile ? 'auto' : 'hidden',
+    padding: isMobile ? '20px 0' : '0',
 
     },
     modalContainer: {
       backgroundColor: '#fff',
       width: '90%',
       maxWidth: '1100px',
-      height: isMobile?"1010px":'600px',
+      height: isMobile?"auto":'600px',
+       maxHeight: isMobile ? 'none' : '90vh',
       padding: '20px',
       display: 'flex',
       flexDirection:isMobile? "column":"none",
       borderRadius: '6px',
       overflow: 'hidden',
-      overflowY:isMobile?'visible': 'hidden',
-
       boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
     },
     leftPanel: {
       flex: 1,
       padding: '20px',
-      borderRight: '1px solid #eee',
+        borderRight: isMobile ? 'none' : '1px solid #eee',
       display: 'flex',
       flexDirection: 'column',
       overflowY: 'auto',
+       maxHeight: isMobile ? '385px' : '560px',
     },
     rightPanel: {
       flex: 1,
@@ -409,14 +456,19 @@ console.log(vetAvailability)
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
+          overflowY: isMobile ? 'auto' : 'visible',
+    maxHeight: isMobile ? 'none' : '560px',
     },
     closeButton: {
       position: 'absolute',
-      top: '4px',
-      right: '10px',
+      top:'70px',
+      right: '190px',
       fontSize: '24px',
       cursor: 'pointer',
       color: '#113047',
+      marginTop:isMobile?'-35px':'0',
+      marginRight:isMobile?'-140px':'0'
+
     },
     vetProfile: {
       display: 'flex',
@@ -605,25 +657,53 @@ const popupStyles = {
 
                   <div style={buttonstyle}>
                 
-                    {isAtLeastThreeDaysAway(appointment.appointment.appointmentDate) && appointment.appointment.appointmentStatus !== 'cancelled' ? (
+{isAtLeastThreeDaysAway(appointment.appointment.appointmentDate) &&
+ appointment.appointment.appointmentStatus !== 'cancelled' &&
+ appointment.vet?.is_approved !== "deleted" ? (
   <button
     onClick={() => handleRescheduleClick(appointment)}
-     disabled={appointment.appointment.appointmentStatus === 'pendingRefund'}
-    style={{ backgroundColor: "#3D586C", color: "white", fontWeight: "bold", fontStyle: "italic", padding: isMobile? "9px 15px": "9px 17px", borderRadius: "5px", border: "1px solid #ccc", cursor: "pointer", fontSize: isMobile? "11px": "14px" }}
+    style={{
+      backgroundColor: "#3D586C",
+      color: "white",
+      fontWeight: "bold",
+      fontStyle: "italic",
+      padding: isMobile ? "9px 15px" : "9px 17px",
+      borderRadius: "5px",
+      border: "1px solid #ccc",
+      cursor: "pointer",
+      fontSize: isMobile ? "11px" : "14px"
+    }}
   >
     Reschedule Appointment
   </button>
 ) : (
   <button
     disabled
-    title={appointment.appointment.appointmentStatus === 'cancelRequested'
-      ? "Cancellation request in progress. Reschedule disabled."
-      : "Appointments can only be rescheduled at least 3 days in advance."}
-    style={{ backgroundColor: "#E4E4E4", color: "#989898", fontWeight: "bold", fontStyle: "italic", padding: isMobile? "9px 15px": "9px 19px", borderRadius: "5px", border: "1px solid #aaa", cursor: "not-allowed", fontSize: isMobile? "11px": "14px" }}
+    title={
+      appointment.appointment.appointmentStatus === 'cancelRequested'
+        ? "Cancellation request in progress. Reschedule disabled."
+        : appointment.vet?.is_approved === "deleted"
+        ? "Vet is no longer available for rescheduling."
+        : "Appointments can only be rescheduled at least 3 days in advance."
+    }
+    style={{
+      backgroundColor: "#E4E4E4",
+      color: "#989898",
+      fontWeight: "bold",
+      fontStyle: "italic",
+      padding: isMobile ? "9px 15px" : "9px 19px",
+      borderRadius: "5px",
+      border: "1px solid #aaa",
+      cursor: "not-allowed",
+      fontSize: isMobile ? "11px" : "14px"
+    }}
   >
     Reschedule Unavailable
   </button>
 )}
+
+
+
 
 
                <button
@@ -755,6 +835,7 @@ const popupStyles = {
       {showRescheduleModal && selectedAppointment && (
         <div style={rescheduleModalStyles.overlay}>
           <div style={rescheduleModalStyles.modalContainer}>
+              <div style={rescheduleModalStyles.closeButton} onClick={() => setShowRescheduleModal(false)}>×</div>
             {/* Left Panel - Appointment Details */}
             <div style={rescheduleModalStyles.leftPanel}>
               <h3 style={{ marginBottom: "20px", color: "#113047",marginTop:"17px" , fontSize:"18px"}}>Your Appointment Details:</h3>
@@ -773,7 +854,7 @@ const popupStyles = {
 <hr ></hr>
             {/* Right Panel - Rescheduling */}
             <div style={rescheduleModalStyles.rightPanel}>
-              <div style={rescheduleModalStyles.closeButton} onClick={() => setShowRescheduleModal(false)}>×</div>
+              {/* <div style={rescheduleModalStyles.closeButton} onClick={() => setShowRescheduleModal(false)}>×</div> */}
               
               {/* Vet Profile */}
               <div style={rescheduleModalStyles.vetProfile}>
@@ -783,7 +864,7 @@ const popupStyles = {
     selectedAppointment.vet.photo
       ? selectedAppointment.vet.photo.startsWith('http')
         ? selectedAppointment.vet.photo // Already a full URL
-        : `https://vetserver.onrender.com/${selectedAppointment.vet.photo.replace(/\\/g, '/').replace(/^\/+/, '')}`
+        : `${process.env.REACT_APP_BASE_URL}/${selectedAppointment.vet.photo.replace(/\\/g, '/').replace(/^\/+/, '')}`
       : '/defaultvet.jpg'
   }
   alt={selectedAppointment.vet.name}

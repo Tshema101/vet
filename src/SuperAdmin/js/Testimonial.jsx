@@ -24,7 +24,7 @@ const Testimonial = () => {
     }
 
     try {
-      const response = await axios.get("https://vetserver.onrender.com/getTestimonials", {
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/getTestimonials`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -54,7 +54,7 @@ const Testimonial = () => {
 
     try {
       await axios.put(
-        `https://vetserver.onrender.com/disableTestimonial/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/disableTestimonial/${id}`,
         { Disable: newDisableState },
         {
           headers: { Authorization: `Bearer ${token}` },

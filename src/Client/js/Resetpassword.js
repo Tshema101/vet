@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +56,7 @@ const ResetPassword = () => {
       try {
         const email = localStorage.getItem("email");
 
-        const response = await fetch(`https://vetserver.onrender.com/reset-password/${email}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/reset-password/${email}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

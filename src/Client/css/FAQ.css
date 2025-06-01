@@ -87,13 +87,13 @@
   
     .faq-tag {
       color: #c13f3f;
-      font-weight: bold;
+      font-weight:800;
       margin-bottom: 10px;
-      font-size: 14px;
+      font-size: 16px;
     }
   
     .faq-title {
-      font-size: 20px;
+      font-size: 22px;
       color: #123c59;
       margin-bottom: 40px;
     }

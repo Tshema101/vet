@@ -36,7 +36,7 @@ const ExpertiseMngt = () => {
     }
 
     try {
-      const response = await axios.get("https://vetmanagementsystem-nbl5.onrender.com//getExpertise", {
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/getExpertise`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setExpertiseList(response.data);
@@ -60,7 +60,7 @@ const ExpertiseMngt = () => {
         return;
       }
 
-      await axios.delete(`https://vetmanagementsystem-nbl5.onrender.com//deleteExpertise/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/deleteExpertise/${id}`, {
         headers: { Authorization: `Bearer ${token} ` },
       });
 
@@ -125,7 +125,7 @@ const ExpertiseMngt = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post("https://vetmanagementsystem-nbl5.onrender.com//signup", {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/signup`, {
         name: newExpertise.name,
         email: newExpertise.email,
         contact_no: newExpertise.contact_no,
@@ -154,7 +154,7 @@ const ExpertiseMngt = () => {
     try {
       setLoading(true);
       const response = await axios.put(
-        `https://vetmanagementsystem-nbl5.onrender.com//expertise/${editingExpertise._id}`,
+        `${process.env.REACT_APP_BASE_URL}/expertise/${editingExpertise._id}`,
         newExpertise,
         {
           headers: {

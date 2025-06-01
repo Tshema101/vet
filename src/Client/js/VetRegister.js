@@ -364,41 +364,7 @@ if (!formData.CID.trim()) {newErrors.CID = 'CID is required';
     return Object.keys(newErrors).length === 0;
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log('Form submission triggered');
-  //   setApiError(''); // Clear any previous API errors
-  //   console.log("Form Data Before Sending:", formData);
-  //   if (validateForm()) {
-  //     console.log('Form validation passed, sending API request...');
-  //     try {
-  //       const response = await fetch('https://vetserver.onrender.com/signup', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(formData), 
-          
-  //       });
-      
-        
-  //       if (response.ok) {
-  //         console.log('Signup successful');
-  //         setShowPopup(true); // Show confirmation popup
-        
-  //       } else {
-  //         // Handle errors returned by the API
-  //         const errorData = await response.json();
-  //         console.log(errorData);
-  //         setApiError(errorData.message || 'Signup failed');
-  //       }
-  //     } catch (error) {
-  //       console.log(error)
-  //       console.error('Error during signup:', error);
-  //       setApiError('An error occurred. Please try again later.');
-  //     }
-  //   }
-  // };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form submission triggered');
@@ -429,7 +395,7 @@ if (!formData.CID.trim()) {newErrors.CID = 'CID is required';
       }
       setLoading(true);
       try {
-        const response = await fetch('https://vetserver.onrender.com/signup', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/signup`, {
           method: 'POST',
           body: formDataToSend, // Send FormData without the 'Content-Type' header
         });

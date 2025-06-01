@@ -1,5 +1,5 @@
 // src/components/RateVetForm.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../css/VetRegister.css'; 
@@ -9,6 +9,16 @@ const RateVetForm = ({ vetId }) => {
   const [selectedStars, setSelectedStars] = useState(0);
   const [formData, setFormData] = useState({ review: "" });
    const [showPopup, setShowPopup] = useState(false);
+     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
 
    const popupStyles = {
     overlay: {
@@ -97,7 +107,7 @@ const RateVetForm = ({ vetId }) => {
 
     try {
       const response = await axios.post(
-        `https://vetserver.onrender.com/vet/${vetId}/review`,
+        `${process.env.REACT_APP_BASE_URL}/vet/${vetId}/review`,
         {
             
           rating: selectedStars,
@@ -129,6 +139,7 @@ const RateVetForm = ({ vetId }) => {
         borderRadius: '8px',
         marginBottom: '60px',
         marginTop: '50px',
+        marginLeft:isMobile?'-65px':'0'
       }}
     >
       <div style={{ marginBottom: '15px' }}>

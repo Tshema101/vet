@@ -66,7 +66,7 @@ const MySchedule = () => {
       try {
         // Fetch specific date availability
         const dateRes = await fetch(
-          `http://localhost:8080/availability/date/${vetId}/${formattedDate}`, 
+          `${process.env.REACT_APP_BASE_URL}/availability/date/${vetId}/${formattedDate}`, 
           { headers }
         );
         const dateData = await dateRes.json();
@@ -81,7 +81,7 @@ const MySchedule = () => {
 
         // Fallback to day of week availability
         const dayRes = await fetch(
-          `http://localhost:8080/availability/day/${vetId}/${dayName}`, 
+          `${process.env.REACT_APP_BASE_URL}/availability/day/${vetId}/${dayName}`, 
           { headers }
         );
         const dayData = await dayRes.json();
@@ -227,7 +227,7 @@ const MySchedule = () => {
       };
 
       const response = await fetch(
-        `http://localhost:8080/availability/date/${vetId}/${formattedDate}`,
+        `${process.env.REACT_APP_BASE_URL}/availability/date/${vetId}/${formattedDate}`,
         {
           method: 'PUT',
           headers: {

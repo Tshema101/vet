@@ -44,11 +44,11 @@ const VetEditProfile = () => {
         const userId = decodedToken.userId;
 
         // Fetch profile data
-        const profileRes = await fetch(`http://localhost:8080/vets/${userId}`, { headers });
+        const profileRes = await fetch(`${process.env.REACT_APP_BASE_URL}/vets/${userId}`, { headers });
         const profileData = await profileRes.json();
         
         // Fetch availability data
-        const availabilityRes = await fetch(`http://localhost:8080/availability/${userId}`, { headers });
+        const availabilityRes = await fetch(`${process.env.REACT_APP_BASE_URL}/availability/${userId}`, { headers });
         const availabilityData = await availabilityRes.json();
 
         const initialData = {
@@ -293,7 +293,7 @@ const VetEditProfile = () => {
           }
         });
   
-        const response = await fetch(`http://localhost:8080/update-vet/${userId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/update-vet/${userId}`, {
           method: 'PUT',
           body: formData
         });
@@ -342,7 +342,7 @@ const VetEditProfile = () => {
             slots: data.slots
           }));
   
-          const availabilityResponse = await fetch(`http://localhost:8080/availability/${userId}`, {
+          const availabilityResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/availability/${userId}`, {
             method: 'PUT',
             headers,
             body: JSON.stringify({ availability: availabilityData })
