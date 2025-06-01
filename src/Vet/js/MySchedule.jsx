@@ -390,16 +390,18 @@ const MySchedule = () => {
         {/* Confirmation Modal */}
         {showConfirmation && (
         <div className="modal-overlay">
-          <div className="confirmation-modal">
+          <div  className="confirmation-modal">
             <h3>
               Are you sure you want to make this slot {actionType === 'available' ? 'available' : 'unavailable'} to the clients?
             </h3>
             
             <div className="modal-buttons">
-              <button className="confirm-btn" onClick={postChanges}>
-                Yes, Update
-              </button>
-              <button className="cancel-btn" onClick={cancelPostChanges}>
+              <div style={{ marginTop: '-10px' }} >
+              <button style={{backgroundColor:"#113047",  width:'95px', fontSize:'15px',borderRadius:'6px', marginLeft:"40px",marginTop: '20px'}} className="confirm-btn" onClick={postChanges}>
+                Update
+              </button></div>
+
+              <button style={{backgroundColor:"#A52727",  width:'95px', fontSize:'15px',borderRadius:'6px', marginRight:"50px", padding:"8px 25px"}} className="cancel-btn" onClick={cancelPostChanges}>
                 Cancel
               </button>
             </div>
