@@ -52,17 +52,10 @@ const Report = () => {
       <div className="flex-1 flex flex-col">
         <AdminHeader />
         <div style={{marginTop:"-30px"}} className="dashboard-container">
-          <div
-        className="table-container"
-        style={{
-          maxHeight: "400px",
-          overflowY: "auto",
-          overflowX: "auto",
-          border: "1px solid #ddd",
-          marginTop: "20px",
-        }}
-      >
             <h3 style={{ padding: "20px" }}>Vet Reports</h3>
+            <div
+        className="table-container"
+      >
             {loading ? (
               <p>Loading...</p>
             ) : error ? (
