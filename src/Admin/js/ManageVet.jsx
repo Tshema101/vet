@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash,FaArrowAltCircleRight } from "react-icons/fa";
 import "../css/astyles.css";
 import AdminHeader from "./Header";
 import SuperAdminSidebar from "./Sidebar";
+import { color } from "framer-motion";
 
 const ManageVet = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -98,6 +99,10 @@ const ManageVet = () => {
             }}
           >
             <h3 style={{ padding: "20px" }}>Approved Vets</h3>
+
+<h4 style={{ marginLeft:'900px', marginTop:'-10px', marginBottom:'10px' }}> <a href="/deletehistory" style={{textDecoration:"none", color:'black'}}>Delete History <FaArrowAltCircleRight  style={{marginBottom:"-3px"}}/> </a> </h4>
+
+
             {loading ? (
               <p>Loading...</p>
             ) : vetList.length === 0 ? (

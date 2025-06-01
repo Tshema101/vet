@@ -58,6 +58,7 @@ import './App.css';
 
 import React, { useState, useEffect } from 'react';
 import OTPChange from './Client/js/OTPChange.js';
+import DeleteHistory from './Admin/js/DeleteHistory.jsx';
 
 const AppWrapper = () => {
   const location = useLocation();
@@ -126,6 +127,7 @@ function App() {
         <Route path="/expertiseMngt" element={<ExpertiseMngt />} />
         <Route path="/manageTestimonial" element={<Testimonial />} />
         <Route path="/refund-forms" element={<RefundForm />} />
+        
 
 
         {/* EXPERTISE */}
@@ -137,7 +139,7 @@ function App() {
         <Route path="/vet-appointments" element={<VetAppointments />} />
         <Route path="/monthlyPayout" element={<MonthlyPayOut />} />
         <Route path="/vetManage" element={<ManageVet />} />
-
+<Route path="/deletehistory" element={<DeleteHistory />} />
 
         {/* VET DASHBOARD */}
 
