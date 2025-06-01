@@ -238,15 +238,7 @@ const VetApp = () => {
                                                               marginBottom: '20px',
                                                             }}
                                                           >
-                                                            <FaTimes
-                                                              onClick={() => setShowCertificate(false)}
-                                                              style={{
-                                                                position: 'absolute',
-                                                                top: '-70px',
-                                                                right: '10px',
-                                                                cursor: 'pointer',
-                                                              }}
-                                                            />
+                                                           
                                                             {imageUrl ? (
                                                               <img
                                                                 src={imageUrl}
