@@ -87,22 +87,13 @@ const ManageVet = () => {
         <AdminHeader />
         <div className="dashboard-container" style={{ marginTop: "-30px" }}>
           {error && <div className="error-message">{error}</div>}
-
-          <div
-            className="table-container"
-            style={{
-              maxHeight: "400px",
-              overflowY: "auto",
-              overflowX: "auto",
-              border: "1px solid #ddd",
-              marginTop: "20px",
-            }}
-          >
             <h3 style={{ padding: "20px" }}>Approved Vets</h3>
 
 <h4 style={{ marginLeft:'900px', marginTop:'-10px', marginBottom:'10px' }}> <a href="/deletehistory" style={{textDecoration:"none", color:'black'}}>Delete History <FaArrowAltCircleRight  style={{marginBottom:"-3px"}}/> </a> </h4>
 
-
+ <div
+            className="table-container"
+          >
             {loading ? (
               <p>Loading...</p>
             ) : vetList.length === 0 ? (
