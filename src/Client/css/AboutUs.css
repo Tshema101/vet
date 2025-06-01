@@ -1,0 +1,221 @@
+/* AboutUs.css - Responsive Styles */
+
+/* Base Styles for All Screens */
+.about-us-container {
+  padding: 40px;
+  background: #fffef9;
+  margin-top: 640px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.about-us-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.about-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.about-images img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  width: 100%;
+  margin-top: 20px;
+  gap: 20px;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.tabs button.active {
+  border-color: #0d3b5f;
+  color: #0d3b5f;
+}
+
+.skills-section {
+  margin-top: 60px;
+  width: 100%;
+}
+
+.skills-section h3 {
+  color: #a00;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.skills-section ul {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.skills-section li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta {
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* Responsive Adjustments */
+
+/* Medium screens (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .about-us-content {
+    flex-direction: row;
+  }
+
+  .about-images {
+    grid-template-columns: repeat(2, 1fr);
+    flex: 1;
+  }
+
+  .about-text {
+    flex: 1;
+    margin-left: 30px;
+  }
+
+  .tabs {
+    gap: 3rem;
+    margin-left: 30px;
+  }
+}
+
+/* Large screens (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .about-us-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screens (phones, less than 768px) */
+@media (max-width: 767px) {
+  .about-us-container {
+    padding: 20px;
+    margin-top: 400px;
+  }
+
+  .tabs {
+    justify-content: center;
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .tabs button {
+    font-size: 16px;
+  }
+
+  .skills-section h3 {
+    font-size: 24px;
+  }
+
+  .about-text {
+    margin-left: 10px;
+  }
+}
+
+/* Very small screens (phones, less than 576px) */
+@media (max-width: 575px) {
+  .about-us-container {
+    padding: 15px;
+    margin-top: 300px;
+  }
+    .about {
+    font-size: 1.8rem !important;
+    margin-top: -300px !important;
+    margin-right: 110px;
+    padding-top: 90px;
+    
+  }
+
+  .about-images {
+    grid-template-columns: 1fr;
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tabs button {
+    font-size: 18px;
+  }
+
+  .skills-section h3 {
+    font-size: 20px;
+  }
+}
+
+/* Banner and Header adjustments */
+@media (max-width: 767px) {
+  .wSection {
+    margin-left: 0 !important;
+    padding: 1rem !important;
+  }
+
+  .about {
+    font-size: 2rem !important;
+    margin-top: -400px !important;
+    margin-right: 110px;
+    /* padding-top: 50px; */
+    
+  }
+}
+
+/* Ensure content doesn't overflow on small screens */
+.content-title,
+.content-text,
+.offer-list li {
+  margin-left: 0;
+  padding: 0 10px;
+  word-wrap: break-word;
+}
+
+/* Make sure the page container doesn't cause horizontal scrolling */
+.page-container {
+  overflow-x: hidden;
+  width: 100%;
+}

@@ -1,0 +1,274 @@
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    /* background-color: #f3f4f6; */
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.main {
+    flex: 1;
+    padding: 24px;
+    position: relative; /* Add this */
+    /* padding-top: 80px; */
+    margin-top: -20px;
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.subtext {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: 600;
+    margin-left: 40px;
+}
+
+/* Calendar Navigation */
+.calendar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+
+
+
+/* Current Date */
+.current-date {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 0 auto 16px;
+    text-align: center;
+    max-width: 300px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+/* Time Slots */
+.time-slots-container {
+    max-width: 600px;
+    margin: 0 auto;
+    /* background: white; */
+    padding: 16px;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .time-slot {
+    display: flex;
+    background: white;
+
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 16px;
+    margin-bottom: 8px;
+    border: 1px solid #806E63;
+    border-radius: 6px;
+  }
+  
+  .time-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 70%; 
+    font-weight: 300;
+  }
+  
+  .time-label {
+    width: 80px; /* Fixed width for labels */
+    text-align: center;
+    margin-left: 20px;
+  }
+  
+  .time-box {
+    width: 50rem;
+    display: inline-block;
+    padding: 10px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    margin-right: 10px;
+  }
+  
+  .status-badge.active {
+    background-color: rgba(10, 182, 30, 0.1);
+    color: #0AB61E;
+  }
+  
+  .status-badge.inactive {
+    background-color: rgba(219, 24, 24, 0.1);
+    color: #DB1818;
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  .status-dot.active {
+    background-color: #0AB61E;
+  }
+  
+  .status-dot.inactive {
+    background-color: #DB1818;
+  }
+  
+  .select-all-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+  
+  .select-all-btn {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .select-all-btn:hover {
+    background-color: #f0f7ff;
+  }
+
+
+
+
+.post-btn {
+    background-color: #113047;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+    width: 150px;
+}
+
+.post-btn:hover {
+    background-color: #225378;
+}
+
+/* Updated CSS for the calendar section */
+.calendar-wrapper {
+    max-width: 650px;
+    margin: 0 auto 16px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 8px;
+    background: white;
+  }
+  
+  .calendar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 18px;
+    margin-top: 28px;
+  }
+  
+.nav-arrowS {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-top: -100px;
+}
+
+.nav-arrowS:hover {
+  background-color: #f3f4f6;
+  color: #113047;
+}
+
+
+
+
+
+
+  
+  .days-container {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    justify-content: space-between;
+  }
+  
+  .day-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    min-width: 36px;
+    flex: 1;
+  }
+  
+  .day-pill.active {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+    font-weight: 500;
+  }
+  
+  .day-date {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  
+  .current-date {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 4px;
+    margin-bottom: 15px;
+  }
+
+
+
+
+
+
+
+
+

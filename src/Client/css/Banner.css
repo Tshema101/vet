@@ -1,0 +1,111 @@
+
+
+
+.banner-image {
+  width: 100%;
+  max-width: 1500px;
+  height: 630px;
+  object-fit: cover;
+  filter: brightness(0.73);
+  opacity: 0.85;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 0;
+    background: transparent;
+    overflow: hidden;
+    border: none;
+}
+
+
+
+/* Specific fix for 480px */
+@media (max-width: 480px) {
+
+  .banner-image {
+    height: 520px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    filter: brightness(0.75);
+    opacity: 0.85;
+    display: block;
+     padding: 0;
+  line-height: 0;
+    background: transparent;
+    overflow: hidden;
+    border: none;
+  }
+
+  .bone-animation {
+    width: 80px;
+    height: 20px;
+     top: 70px;
+    left: 40px;
+  }
+
+  .paw-animation {
+    width: 30px;
+    height: 25px;
+     top: 100px;
+    right: 40px;
+  }
+}
+
+/* Responsive styles for tablets and below */
+@media (max-width: 1024px) {
+  .banner-image {
+    height: 400px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 600px) {
+  .banner-image {
+    height: 500px;
+  }
+  
+}
+
+@media (max-width: 400px) {
+  .banner-image {
+    height: 580px;
+
+  }
+
+
+  .bone-animation {
+     width: 60px;
+    height: 16px;
+    top: 60px;
+    left: 30px;
+    
+  }
+
+  .paw-animation {
+    width: 25px;
+    height: 20px;
+    top: 80px;
+    right: 30px;
+  }
+}
+
+
+/* Extra small devices (360px and below) */
+@media (max-width: 360px) {
+  .banner-container {
+    height: 200px;
+  }
+   .bone-animation {
+    width: 50px;
+    height: 14px;
+    top: 50px;
+    left: 20px;
+  }
+
+  .paw-animation {
+    width: 20px;
+    height: 18px;
+    top: 70px;
+    right: 20px;
+  }
+}

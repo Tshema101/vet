@@ -1,0 +1,199 @@
+/* Add this CSS to your existing Footer.css file or create a new one */
+
+/* Base styles for all screen sizes */
+footer {
+  background-image: url('../Images/footer.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: 'Arial, sans-serif';
+  width: 100%;
+  position: relative;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.responsive-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 200px auto 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.responsive-logo {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.responsive-logo img {
+  width: 105px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.responsive-logo p {
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.responsive-links {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 120px;
+  margin-left: 200px;
+  margin-bottom: 20px;
+}
+
+.responsive-links h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.responsive-links ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 2;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.social-icon {
+  color: #113a56;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.copyright {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+
+/* Medium screens (tablets, 768px to 1024px) */
+@media (max-width: 1024px) {
+  .responsive-container {
+    margin-top: 150px;
+  }
+  
+  .responsive-links {
+    gap: 80px;
+    margin-left: 100px;
+  }
+}
+
+/* Small screens (tablets, 768px and down) */
+@media (max-width: 768px) {
+  footer {
+    height: auto;
+    padding: 30px 20px;
+  }
+  
+  .responsive-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .responsive-logo {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .responsive-links {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    gap: 40px;
+  }
+  
+  .social-icons {
+    margin-top: 40px;
+  }
+}
+
+/* Extra small screens (phones, 480px and down) */
+@media (max-width: 480px) {
+  footer {
+    padding: 20px 15px;
+  }
+  
+  .responsive-container {
+    margin-top: 80px;
+  }
+  
+  .responsive-logo img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .responsive-logo p {
+    font-size: 14px;
+  }
+  
+  .responsive-links {
+    gap: 30px;
+  }
+  
+  .responsive-links h3 {
+    font-size: 16px;
+  }
+  
+  .responsive-links ul {
+    font-size: 13px;
+  }
+  
+  .social-icons {
+    gap: 20px;
+  }
+  
+  .social-icon {
+    padding: 8px;
+    font-size: 18px;
+  }
+  
+  .copyright {
+    font-size: 12px;
+  }
+}
+
+/* Very small screens (phones, 360px and down) */
+@media (max-width: 360px) {
+  .responsive-links {
+    gap: 25px;
+  }
+  
+  .social-icons {
+    gap: 15px;
+  }
+}

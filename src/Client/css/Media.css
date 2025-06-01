@@ -1,0 +1,195 @@
+/* Media.css - Responsive Styles */
+
+/* Base styles for all screen sizes */
+.media-container {
+  padding: 2rem;
+  background-color: #fffef9;
+  margin-top: 630px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.media-section {
+  margin-bottom: 3rem;
+  /* border-bottom: 1px solid #a2a2a2; */
+  padding-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  margin-top: 30px;
+}
+
+.media-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  border-bottom: 1px solid #a2a2a2;
+  margin-bottom: 3rem;
+
+}
+
+.media-text {
+  width: 100%;
+}
+
+.media-text h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.media-text p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.media-text h4 {
+  margin-top: 1.5rem;
+  color: #34495e;
+  font-size: 1.2rem;
+}
+
+.media-text ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.media-text li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.media-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.media-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+/* Header/Banner adjustments */
+.Section {
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+.news {
+  font-size: 2.5rem;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: -300px;
+}
+
+/* Responsive adjustments */
+
+/* Medium screens (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .media-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .media-text {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .media-image {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .media-image img {
+    width: 90%;
+    height: 85%;
+    
+  }
+  
+  .news {
+    font-size: 3rem;
+    margin-top: -350px;
+  }
+}
+
+/* Large screens (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .media-container {
+    padding: 3rem;
+  }
+  
+  .media-section {
+    padding: 0 2rem;
+  }
+  
+  .news {
+    font-size: 3.5rem;
+  }
+}
+
+/* Small screens (phones, less than 576px) */
+@media (max-width: 575px) {
+  .media-container {
+    padding: 1rem;
+    margin-top: 300px;
+  }
+  
+  .media-section {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 0.5rem;
+    
+  }
+
+  
+  .news h2 {
+    font-size: 1rem;
+    margin-top: 250px;
+    margin-right: 800px;
+  }
+  
+  .Section {
+    padding: 1rem;
+  }
+}
+
+/* Outbreak section images */
+.certification-item {
+  width: 90% !important;
+  height: auto !important;
+  margin-left: 0 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 20px;
+
+}
+
+.certification-thumbnail {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+/* Ensure content doesn't overflow */
+.media-text ul ul {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+/* Prevent horizontal scrolling */
+.page-container {
+  overflow-x: hidden;
+  width: 100%;
+}

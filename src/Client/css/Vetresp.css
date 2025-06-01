@@ -1,0 +1,98 @@
+@media (max-width: 1200px) {
+  .vetcontainer {
+    grid-template-columns: 1fr !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .vetcard {
+    width: 90% !important;
+    margin: 1rem auto !important;
+  }
+
+  .search-tags {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10px !important;
+  }
+
+  .search-tag {
+    width: 80% !important;
+    justify-content: center;
+  }
+
+  .messagetext {
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .vetcard {
+    padding: 15px !important;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .vetcard img {
+    margin: 0 auto 10px auto;
+  }
+
+  .vetinfo {
+    text-align: left;
+    align-items: left;
+  }
+
+  .vetrating {
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+
+  .vetchargecert {
+    flex-direction: column;
+    align-items: center;
+  }
+  .description{
+    text-align: left;
+    margin: 0 auto;
+    padding: 0 10px;
+    font-size: 9px;
+  }
+
+  .cert-link {
+    text-align: center;
+  }
+}
+
+@media (max-width: '< 480px') {
+  .vetcard {
+    width: 500px !important;
+    margin: 0 auto !important;
+  }
+
+  .searchtag {
+    width: 100% !important;
+  }
+
+  .messagetext {
+    font-size: 12px !important;
+    text-align: left;
+  }
+    .vetinfo {
+    text-align: left;
+    font-size: 9px;
+    
+  }
+    .vetcard img {
+        width: 100% !important;
+        height: auto !important;
+    }
+      .description{
+    text-align: left;
+    margin: 0 auto;
+    padding: 0 10px;
+    font-size: 9px;
+  }
+}

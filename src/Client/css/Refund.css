@@ -1,0 +1,53 @@
+/* Add this to your existing CSS (VetRegister.css or style section) */
+@media only screen and (min-width: 480px) {
+  .refund-container {
+    width: 80% !important;
+    margin-top: 80px !important;
+  }
+
+  .policy-section, .form-section {
+    padding: 25px !important;
+    font-size: 14px !important;
+  }
+
+  .appointment-details, .user-info {
+    flex-direction: row !important;
+    gap: 20px !important;
+  }
+
+  .appointment-details > div, .user-info > div {
+    width: 48% !important;
+  }
+
+  .reasons-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-left: 0 !important;
+  }
+
+  .reasons-list div {
+    margin-top: 0 !important;
+  }
+
+  .confirmation-checkbox {
+    margin-top: 40px !important;
+  }
+
+  .submit-button {
+    width: 150px !important;
+    font-size: 16px !important;
+    padding: 12px 25px !important;
+  }
+
+  .popup-box {
+    width: 450px !important;
+    height: 300px !important;
+    padding: 40px !important;
+  }
+
+  .popup-text {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+}

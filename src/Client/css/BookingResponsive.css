@@ -1,0 +1,114 @@
+/* Mobile First Approach - Base styles (up to 480px) */
+.booking-search-section {
+  padding: 1rem;
+  margin-top: 2rem !important;
+  
+}
+
+.booking-title {
+  font-size: 1.2rem !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.booking-subtitle {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.booking-search-container {
+  flex-direction: column;
+  height: auto !important;
+  padding: 1rem !important;
+  gap: 0.8rem;
+    width: 100%;
+    margin-left: 100px;
+    margin-right: 50px;
+    height: 500px;
+}
+
+.booking-input-wrapper {
+  width: 100%;
+  padding-bottom: 6px;
+}
+
+.booking-search-input,
+.booking-category-select {
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.booking-search-button {
+  width: 100%;
+  font-size: 1rem;
+  margin-top: 0 !important;
+  height: 42px;
+}
+
+/* Small devices (481px to 768px) */
+@media only screen and (min-width: 481px) {
+  .booking-search-section {
+    padding: 1.5rem;
+  }
+
+  .booking-title {
+    font-size: 1.6rem !important;
+  }
+
+  .booking-subtitle {
+    font-size: 1rem;
+  }
+
+  .booking-search-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.5rem !important;
+    gap: 1rem;
+  }
+
+  .booking-search-input,
+  .booking-category-select {
+    font-size: 1rem;
+  }
+
+  .booking-search-button {
+    width: auto;
+    min-width: 120px;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Medium devices (769px to 1024px) */
+@media only screen and (min-width: 769px) {
+  .booking-search-container {
+    flex-direction: row;
+    width: 85%;
+  }
+
+  .booking-input-wrapper {
+    width: auto;
+    flex-grow: 1;
+    padding-bottom: 0;
+  }
+
+  .booking-search-button {
+    width: 25%;
+  }
+}
+
+/* Large devices (1025px and up) */
+@media only screen and (min-width: 1025px) {
+  .booking-search-container {
+    width: 80%;
+    max-width: 1200px;
+  }
+
+  .booking-title {
+    font-size: 2rem !important;
+  }
+
+  .booking-subtitle {
+    font-size: 1.1rem;
+  }
+}

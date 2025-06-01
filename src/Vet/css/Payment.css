@@ -1,0 +1,245 @@
+/* Payment.css - Matching Appointments Styling */
+
+  
+  /* Payment Header */
+  .payment-header {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  .payment-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .payment-title h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+  }
+  
+  /* Year Navigation - Matching Appointments Date Navigation */
+  .yr-navigation-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .date-display-box {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .nav-arrowP {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-arrowP:hover {
+    background-color: #f3f4f6;
+    color: #113047;
+  }
+  
+  /* Payment Table - Matching Appointments Table */
+  .payment-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 1rem;
+  }
+  
+  .payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-table th,
+  .payment-table td {
+    padding: 1rem;
+    text-align: left;
+    /* border-bottom: 1px solid #e5e7eb; */
+  }
+  
+  .payment-table th {
+    background-color: #011523;
+    font-weight: 600;
+    color: white;
+  }
+  
+.appointments-table tbody tr {
+  border-bottom: 1px solid #ddd; /* line after each row */
+}
+  .payment-table tr:hover {
+    background-color: #f9fafb;
+  }
+  
+  .payment-table td {
+    vertical-align: middle;
+  }
+  
+  /* Status Colors - Matching Appointments */
+  .payment-paid {
+    color: #0D690D;
+    font-weight: 500;
+  }
+  
+  .payment-refunded {
+    color: #BB441D;
+    font-weight: 500;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .main {
+      margin-left: 0;
+      padding: 15px;
+    }
+    
+    .payment-title {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .yr-navigation-box {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .payment-table th,
+    .payment-table td {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+
+
+
+
+  /* Calendar styles (same as appointments) */
+.date-navigation-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.date-display-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.date-display-box:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-icon {
+  color: #4a6fa5;
+}
+/* 
+.nav-arrowP {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a6fa5;
+  padding: 5px;
+} */
+
+.calendar-popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-top: 5px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.calendar-day {
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.calendar-day:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-day.selected {
+  background-color: #4a6fa5;
+  color: white;
+}
+
+.calendar-day.other-month {
+  color: #aaa;
+}
+
+/* Payment status styles */
+.status-paid {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.status-pending {
+  color: #ff9800;
+  font-weight: 500;
+}
+
+.status-failed {
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+.no-payments {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+}
