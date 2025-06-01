@@ -88,17 +88,10 @@ const clientCount = roleCounts.find((role) => role.role_type === "client")?.user
               </div>
             
             </div>
-  <div
-        className="table-container"
-        style={{
-          maxHeight: "400px",
-          overflowY: "auto",
-          overflowX: "auto",
-          border: "1px solid #ddd",
-          marginTop: "20px",
-        }}
-      >
           <h3 style={{padding:"20px"}}>Newly Registered Vets</h3>
+           <div
+        className="table-container"
+      >
             {loading ? (
               <p>Loading...</p>
             ) : error ? (
