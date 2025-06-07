@@ -185,7 +185,7 @@ const VetAppointments = () => {
                 >
                   <span>Total Fees:</span>
                   <span>
-                    <strong>Nu. {totalAmount.toFixed(2)}</strong>
+                    <strong>${totalAmount.toFixed(2)}</strong>
                   </span>
                 </div>
 
@@ -198,7 +198,7 @@ const VetAppointments = () => {
                 >
                   <span>Deduction (20%):</span>
                   <span>
-                    <strong>Nu. {deduction.toFixed(2)}</strong>
+                    <strong>$ {deduction.toFixed(2)}</strong>
                   </span>
                 </div>
 
@@ -211,7 +211,7 @@ const VetAppointments = () => {
                 >
                   <span>Final Amount Transfer to Vet:</span>
                   <span>
-                    <strong>Nu. {finalAmount.toFixed(2)}</strong>
+                    <strong>$ {finalAmount.toFixed(2)}</strong>
                   </span>
                 </div>
 

@@ -226,7 +226,7 @@ console.log(vetData)
                     </p>
                   </div>
                   <p className="rate">
-                    Charge per hour: <span className="rate-amount">Nu. {vetData.chargePerHour || 'Not specified'}</span>
+                    Charge per hour: <span className="rate-amount">$ {vetData.chargePerHour || 'Not specified'}</span>
                   </p>
                 </div>
               </div>

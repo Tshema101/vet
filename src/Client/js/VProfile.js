@@ -81,6 +81,7 @@ const VetProfile = () => {
       if (response.ok) {
         console.log('Vet reported successfully:', data);
         // alert("Report submitted successfully.");
+          setShowPopup(true);
         setIsModalOpen(false);
         setReportText('');
       } else {
@@ -712,7 +713,8 @@ style={{
              />
              <button
             onClick={() => {
-              setShowPopup(true);
+            
+              handleReportSubmit();
               setIsModalOpen(false);
             }}
                style={{

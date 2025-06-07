@@ -193,12 +193,12 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
                           >
                             Refund
                           </button>
-                          <button
-                            className="reject"
+                          {/* <button
+                            className="refund"
                             onClick={() => handleRejectClick(refund)}
                           >
                             Reject
-                          </button>
+                          </button> */}
                         </div>
                       </td>
                     </tr>
@@ -427,7 +427,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
     <div className="modal-box bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full relative">
       <button
         onClick={() => setShowRefundModal(false)}
-        className="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-xl"
+        className="absolute top-4 right-8 text-gray-600 hover:text-red-500 text-xl"
       >
         <FaTimes />
       </button>
