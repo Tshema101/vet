@@ -421,17 +421,21 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
             </div>
           )}
 
-
 {showRefundModal && (
   <div className="modal-overlay inset-0 fixed flex items-center justify-center bg-black bg-opacity-50 z-50">
-    <div className="modal-box bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full relative">
+    <div className="relative modal-box bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full">
+      
+      {/* Close Button in Top-Right */}
       <button
         onClick={() => setShowRefundModal(false)}
-        className="absolute top-4 right-8 text-gray-600 hover:text-red-500 text-xl"
+        className="absolute top-2 right-8 text-gray-600 hover:text-red-500 text-xl"
+        style={{marginInlineStart:'32vh',marginBottom:"10px"}}
       >
         <FaTimes />
       </button>
-      <h3 className="font-semibold text-xl mb-4">Enter Refund Amount</h3>
+
+      <h3 className="font-semibold text-xl " style={{marginBottom:"2px"}}>Enter Refund Amount</h3>
+
       <TextField
         fullWidth
         label="Refunded Amount"
@@ -440,13 +444,15 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
         onChange={(e) => setRefundedAmount(e.target.value)}
         margin="normal"
       />
+
       <Box mt={3}>
         <Button
           variant="contained"
           onClick={confirmRefund}
           style={{ backgroundColor: "#113047", color: "#fff" }}
-      disabled={loading}>
-            {loading ? "Confirming..." : "Confirm Refund"}
+          disabled={loading}
+        >
+          {loading ? "Confirming..." : "Confirm Refund"}
         </Button>
       </Box>
     </div>
