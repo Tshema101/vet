@@ -151,12 +151,13 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="px-4 py-2">Appointment_ID</th>
-                    <th className="px-4 py-2">vet Email</th>
+                    <th className="px-4 py-2">Vet Email</th>
                     <th className="px-4 py-2">Client Email</th>
-                    <th className="px-4 py-2">Appointment_Date</th>
-                    <th className="px-4 py-2">Appointment_Time</th>
-                    <th className="px-4 py-2">Cancellation_Reason</th>
-                    <th className="px-4 py-2">Form_Submitted</th>
+                    <th className="px-4 py-2">Account Number</th>
+                    <th className="px-4 py-2">Appointment Date</th>
+                    <th className="px-4 py-2">Appointment Time</th>
+                    <th className="px-4 py-2">Cancellation Reason</th>
+                    <th className="px-4 py-2">Form Submitted</th>
                     <th className="px-4 py-2">Action</th>
                   </tr>
                 </thead>
@@ -170,6 +171,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
                       </td>
                       <td className="px-4 py-2">{refund.vetId.email}</td>
                       <td className="px-4 py-2">{refund.clientId.email}</td>
+                      <td className="px-4 py-2">{refund.clientId.accountHolderName}</td>
                       <td className="px-4 py-2">
                         {refund.appointmentId?.appointmentDate
                           ? new Date(
