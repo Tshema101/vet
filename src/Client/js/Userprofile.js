@@ -82,7 +82,7 @@ const [vetNotFound, setVetNotFound] = useState(false);
     const fetchMedicalRecords = async (petId) => {
       if (token && petId) {
         try {
-          const response = await fetch(`http://localhost:8080/appointment/${petId}`, {
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/appointment/${petId}`, {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
