@@ -77,7 +77,7 @@ const clientCount = roleCounts.find((role) => role.role_type === "client")?.user
           {/* Stats Section */}
           <div className="stats-grid">
               <div className="stats-card">
-                <h2 className="stats-title">Total Expertise</h2>
+                <h2 className="stats-title">Total Experts</h2>
                 <p className="stats-number">{loading ? "Loading..." : expertiseCount}</p>
               </div>
               <div className="stats-card">
