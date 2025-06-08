@@ -23,7 +23,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
   useEffect(() => {
     const fetchRefunds = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/getallrefund`);
+        const res = await axios.get(${process.env.REACT_APP_BASE_URL}/getallrefund);
         setRefundList(res.data);
       } catch (err) {
         console.error("Failed to fetch refunds", err);
@@ -37,7 +37,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
   const handleRefundClick = (refund) => {
   setSelectedRefund(refund);
   setRefundedAmount(""); // Reset any old input
-  setShowRefundModal(true); // Open refund amount input modal
+  setShowRefundModal(true); // Open refund amount input modal
 };
 
  const confirmRefund = async () => {
@@ -49,7 +49,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
   try {
     console.log(selectedRefund._id)
     await axios.put(
-      `${process.env.REACT_APP_BASE_URL}/refundupdate/${selectedRefund._id}`,
+      ${process.env.REACT_APP_BASE_URL}/refundupdate/${selectedRefund._id},
       {
         refundedAmount: parseFloat(refundedAmount),
       }
@@ -59,7 +59,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
       setRefundSuccessModal(true);
 
     // Refresh data
-    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/getallrefund`);
+    const res = await axios.get(${process.env.REACT_APP_BASE_URL}/getallrefund);
     setRefundList(res.data);
 
     // Close modal
@@ -72,7 +72,7 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
 
   const handleRefund = async () => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/refund`, {
+      const res = await axios.post(${process.env.REACT_APP_BASE_URL}/refund, {
         paymentIntentId: selectedRefund.paymentIntentId, // Make sure this exists!
         amount: selectedAccount.amount,
       });
@@ -106,13 +106,13 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
     }
 
     try {
-      await axios.post(`${process.env.REACT_APP_BASE_URL}/reject-refund`, {
+      await axios.post(${process.env.REACT_APP_BASE_URL}/reject-refund, {
         refundId: selectedRefund._id,
         rejectionReason: rejectionReason,
       });
 
       // Fetch updated refunds list after rejection
-      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/getallrefund`);
+      const res = await axios.get(${process.env.REACT_APP_BASE_URL}/getallrefund);
       console.log("sdfgh", res.data);
       setRefundList(res.data);
       setShowConfirmModal(false);
@@ -151,27 +151,27 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="px-4 py-2">Appointment_ID</th>
-                    <th className="px-4 py-2">Vet Email</th>
+                    <th className="px-4 py-2">vet Email</th>
                     <th className="px-4 py-2">Client Email</th>
-                    <th className="px-4 py-2">Account Number</th>
-                    <th className="px-4 py-2">Appointment Date</th>
-                    <th className="px-4 py-2">Appointment Time</th>
-                    <th className="px-4 py-2">Cancellation Reason</th>
-                    <th className="px-4 py-2">Form Submitted</th>
+                    <th className="px-4 py-2">Client Paypal Email</th>
+                    <th className="px-4 py-2">Appointment_Date</th>
+                    <th className="px-4 py-2">Appointment_Time</th>
+                    <th className="px-4 py-2">Cancellation_Reason</th>
+                    <th className="px-4 py-2">Form_Submitted</th>
                     <th className="px-4 py-2">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                  {refundList
   .filter((refund) => refund.status === "pendingRefund")
-  .map((refund) => (
+  .map((refund) => (
                     <tr key={refund._id} className="text-center border-t">
                       <td className="px-4 py-2">
                         {refund.appointmentId?._id || "N/A"}
                       </td>
                       <td className="px-4 py-2">{refund.vetId.email}</td>
                       <td className="px-4 py-2">{refund.clientId.email}</td>
-                      <td className="px-4 py-2">{refund.clientId.accountHolderName}</td>
+                        <td className="px-4 py-2">{refund.accountHolderName}</td>
                       <td className="px-4 py-2">
                         {refund.appointmentId?.appointmentDate
                           ? new Date(
@@ -324,14 +324,14 @@ const [refundSuccessModal, setRefundSuccessModal] = useState(false);
                     onClick={async () => {
                       try {
                         await axios.post(
-                          `${process.env.REACT_APP_BASE_URL}/reject-refund`,
+                          ${process.env.REACT_APP_BASE_URL}/reject-refund,
                           {
                             refundId: selectedRefund._id,
                             rejectionReason: rejectionReason,
                           }
                         );
                         const res = await axios.get(
-                         `${process.env.REACT_APP_BASE_URL}/getallrefund`
+                         ${process.env.REACT_APP_BASE_URL}/getallrefund
                         );
                         setRefundList(res.data);
                         setShowConfirmationModal(false);
