@@ -41,34 +41,6 @@ const PayOut = () => {
 
     fetchVet();
   }, []);
-
-//   const handleViewAppointments = async (vetId) => {
-//     try {
-//       const response = await axios.get(
-//         `https://vetserver.onrender.com/api/appointments?veterinarianId=${vetId}`
-//       );
-//       const monthlyAppointments = response.data.filter((appt) => {
-//         const apptMonth = new Date(appt.date).getMonth() + 1;
-//         return apptMonth === parseInt(selectedMonth);
-//       });
-
-//       const total = monthlyAppointments.reduce((sum, a) => sum + a.fee, 0);
-//       const deduction = total * 0.2;
-//       const finalAmount = total - deduction;
-
-//       setAppointments((prev) => ({
-//         ...prev,
-//         [vetId]: {
-//           data: monthlyAppointments,
-//           total,
-//           deduction,
-//           finalAmount,
-//         },
-//       }));
-//     } catch (err) {
-//       console.error("Failed to fetch appointments:", err);
-//     }
-//   };
 const handleViewAppointments = async (vet) => {
     setTimeout(() => {
       const dummyAppointments = [
@@ -129,20 +101,6 @@ const handleViewAppointments = async (vet) => {
         <div style={{marginTop:"-30px"}}  className="dashboard-container">
           <div >
             <h3>Approved Vets</h3>
-            {/* <label>
-              Filter by Month:
-              <select
-                value={selectedMonth}
-                onChange={(e) => setSelectedMonth(e.target.value)}
-                style={{ marginLeft: "10px" }}
-              >
-                {Array.from({ length: 12 }, (_, i) => (
-                  <option key={i + 1} value={i + 1}>
-                    {new Date(0, i).toLocaleString("default", { month: "long" })}
-                  </option>
-                ))}
-              </select>
-            </label> */}
           </div>
           <div className="table-container">
             {loading ? (
