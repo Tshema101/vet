@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle, FaPlus, FaCalendarCheck, FaCalendarAlt, FaClock, FaNotesMedical, FaExclamationCircle, FaUserMd, FaDollarSign, FaChevronLeft, FaChevronRight, FaUser, FaPaw, FaMapMarkerAlt, FaIdCard } from 'react-icons/fa';
@@ -215,41 +209,7 @@ const day = String(selectedDate.getDate()).padStart(2, '0');
 
 console.log(vetAvailability)
 
-  // const handleRescheduleClick = (appointment) => {
-  //   console.log(appointment)
-  //   setSelectedAppointment(appointment);
-  //   setSelectedDate(new Date(appointment.appointment.appointmentDate));
-  //   const vetId = appointment.vet._id;
-  //   console.log(vetId)
-  //   fetchVetAvailability(vetId, formattedDate);
-  //   setShowRescheduleModal(true);
-
-  // // const vet = appointment.appointment.vet;
-  // //       if (vet && vet.name && (vet.is_approved === true || vet.is_approved === "true")) {
-  // //          setShowRescheduleModal(true);
-  // //       } else {
-  // //    setShowRescheduleModal(false);
-  // //       }
-
-  // };
-
-//   const handleRescheduleClick = (appointment) => {
-//   const vet = appointment.vet;
-
-//   // If vet is deleted, don't open reschedule modal
-//   if (vet && vet.is_approved === "deleted") {
-//     alert("This vet is no longer available for rescheduling.");
-//     return;
-//   }
-
-//   setSelectedAppointment(appointment);
-//   setSelectedDate(new Date(appointment.appointment.appointmentDate));
-
-//   const vetId = vet._id;
-//   fetchVetAvailability(vetId, formattedDate);
-//   setShowRescheduleModal(true);
-// };
-
+ 
 const handleRescheduleClick = (appointment) => {
   const vet = appointment.vet;
 
